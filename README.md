@@ -173,7 +173,7 @@ node -v
 ### [2-NODE CRASH COURSE 2 - NET NINJA](#)
 
 <details>
-  <summary>2. Sample</summary>
+  <summary>1. Sample</summary>
 
 ```Javascript
 
