@@ -17,18 +17,10 @@ node -v
 </details>
 
 <details>
-  <summary>2. Sample</summary>
+  <summary>2. Run Node File</summary>
 
 ```Javascript
-
-```
-
-```Javascript
-
-```
-
-```Javascript
-
+node index.js
 ```
 
 </details>
