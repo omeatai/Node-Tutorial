@@ -49,7 +49,7 @@ console.log(__dirname)
 ```
 
 ```Javascript
-~/Desktop/SERVER/Cloud/node
+// ~/Desktop/SERVER/Cloud/node
 ```
 
 Absolute Path + Filename
@@ -59,7 +59,7 @@ console.log(__filename)
 ```
 
 ```Javascript
-~/Desktop/SERVER/Cloud/node/test.js
+// ~/Desktop/SERVER/Cloud/node/test.js
 ```
 
 </details>
