@@ -26,18 +26,40 @@ node index.js
 </details>
 
 <details>
-  <summary>3. Sample</summary>
+  <summary>3. The Global Object</summary>
 
 ```Javascript
+let count = 0
 
+const program = global.setInterval(()=>{
+    count++
+    console.log(count)
+}, 1000)
+
+global.setTimeout(()=>{
+    console.log("Setting timeout")
+    clearInterval(program)
+}, 3000)
+```
+
+Absolute Path
+
+```Javascript
+console.log(__dirname)
 ```
 
 ```Javascript
+~/Desktop/SERVER/Cloud/node
+```
 
+Absolute Path + Filename
+
+```Javascript
+console.log(__filename)
 ```
 
 ```Javascript
-
+~/Desktop/SERVER/Cloud/node/test.js
 ```
 
 </details>
