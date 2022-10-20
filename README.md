@@ -110,25 +110,29 @@ console.log(os.platform(), os.homedir());
 // darwin /Users/ifeanyiomeata
 ```
 
-```Javascript
-
-```
-
 </details>
 
 <details>
-  <summary>6. Sample</summary>
+  <summary>6. Reading Files</summary>
 
 ```Javascript
+const fs = require("fs");
 
+// reading files
+fs.readFile('./docs/blog1.txt', (err, data) => {
+    if(err){
+    console.log(err);
+    }
+    console.log(data.toString());
+});
+
+console.log('last line');
 ```
 
 ```Javascript
-
-```
-
-```Javascript
-
+// last line
+// Hello World!
+// Hello World 2!
 ```
 
 </details>
