@@ -91,7 +91,7 @@ console.log(people, ages);
 ```
 
 ```Javascript
-
+// [ 'yoshi', 'ryu', ' chun-li', ' mario' ] [ 20, 25, 30, 35 ]
 ```
 
 </details>
