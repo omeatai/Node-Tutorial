@@ -214,18 +214,31 @@ if (fs.existsSync('./docs/blog1.txt')) {
 </details>
 
 <details>
-  <summary>10. Sample</summary>
+  <summary>10. Read Stream</summary>
 
 ```Javascript
+const fs = require("fs");
+
+const readStream = fs.createReadStream('./docs/blog2.txt', { encoding: 'utf8' });
+
+readStream.on('data', (chunk) => {
+    console.log('-------- NEW CHUNK -----');
+    console.log(chunk);
+});
 
 ```
 
 ```Javascript
-
-```
-
-```Javascript
-
+// -------- NEW CHUNK -----
+// <Buffer 4c 6f 72 65 6d 20 69 70 73 75 6d 20 64 6f 6c 6f 72 20 73 69 74 20 61 6d 65 74 2c 20 63 6f 6e 73 65 63 74 65 74 75 65 72 20 61 64 69 70 69 73 63 69 6e ... 65486 more bytes>
+// -------- NEW CHUNK -----
+// <Buffer 20 56 69 76 61 6d 75 73 20 69 6e 20 65 72 61 74 20 75 74 20 75 72 6e 61 20 63 75 72 73 75 73 20 76 65 73 74 69 62 75 6c 75 6d 2e 20 46 75 73 63 65 20 ... 65486 more bytes>
+// -------- NEW CHUNK -----
+// <Buffer 53 75 73 70 65 6e 64 69 73 73 65 20 66 65 75 67 69 61 74 2e 20 53 75 73 70 65 6e 64 69 73 73 65 20 65 6e 69 6d 20 74 75 72 70 69 73 2c 20 64 69 63 74 ... 65486 more bytes>
+// -------- NEW CHUNK -----
+// <Buffer 69 62 75 6c 75 6d 20 65 74 2c 20 74 65 6d 70 6f 72 20 61 75 63 74 6f 72 2c 20 6a 75 73 74 6f 2e 20 49 6e 20 61 63 20 66 65 6c 69 73 20 71 75 69 73 20 ... 65486 more bytes>
+// -------- NEW CHUNK -----
+// <Buffer 6c 61 6d 63 6f 72 70 65 72 20 75 6c 74 72 69 63 69 65 73 20 6e 69 73 69 2e 20 4e 61 6d 20 65 67 65 74 20 64 75 69 2e 20 45 74 69 61 6d 20 72 68 6f 6e ... 11132 more bytes>
 ```
 
 </details>
