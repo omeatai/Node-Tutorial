@@ -191,18 +191,24 @@ if(!fs.existsSync('./assets')) {
 </details>
 
 <details>
-  <summary>9. Sample</summary>
+  <summary>9. Delete Files</summary>
 
 ```Javascript
+const fs = require("fs");
 
+// deleting files
+if (fs.existsSync('./docs/blog1.txt')) {
+    fs.unlink('./docs/blog1.txt', (err) => {
+        if(err) {
+            console.log(err)
+        }
+        console.log('file deleted');
+    })
+}
 ```
 
 ```Javascript
-
-```
-
-```Javascript
-
+// file deleted
 ```
 
 </details>
