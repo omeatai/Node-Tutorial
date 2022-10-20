@@ -97,14 +97,17 @@ console.log(people, ages);
 </details>
 
 <details>
-  <summary>5. Sample</summary>
+  <summary>5. OS module</summary>
 
 ```Javascript
+const os = require('os');
+
+console.log(os.platform(), os.homedir());
 
 ```
 
 ```Javascript
-
+// darwin /Users/ifeanyiomeata
 ```
 
 ```Javascript
