@@ -67,14 +67,27 @@ console.log(__filename)
 </details>
 
 <details>
-  <summary>4. MOdules and Require</summary>
+  <summary>4. Modules and Require</summary>
+
+require.js:
 
 ```Javascript
+const people = ['yoshi' , 'ryu', ' chun-li' , ' mario'];
+const ages = [20, 25, 30, 35];
+
+module.exports = {
+    people,
+    ages
+};
 
 ```
 
-```Javascript
+modules.js:
 
+```Javascript
+const {people, ages} = require('./require.js');
+
+console.log(people, ages);
 ```
 
 ```Javascript
