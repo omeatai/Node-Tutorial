@@ -160,18 +160,24 @@ fs.writeFile('./docs/blog2.txt', 'hello, again' , () => {
 </details>
 
 <details>
-  <summary>8. Sample</summary>
+  <summary>8. Create Folder/Directory</summary>
 
 ```Javascript
+const fs = require("fs");
 
+// Create directories/Folders
+if(!fs.existsSync('./assets')) {
+    fs.mkdir('./assets', (err) => {
+        if (err) {
+            console.error(err);
+        }
+        console.log('folder created');
+    });
+}
 ```
 
 ```Javascript
-
-```
-
-```Javascript
-
+// folder created
 ```
 
 </details>
