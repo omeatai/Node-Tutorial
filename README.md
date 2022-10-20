@@ -28,6 +28,8 @@ node index.js
 <details>
   <summary>3. The Global Object</summary>
 
+Test.js:
+
 ```Javascript
 let count = 0
 
@@ -65,7 +67,7 @@ console.log(__filename)
 </details>
 
 <details>
-  <summary>4. Sample</summary>
+  <summary>4. MOdules and Require</summary>
 
 ```Javascript
 
