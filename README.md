@@ -286,21 +286,26 @@ readStream.pipe(writeStream);
 
 </details>
 
-+CLIENTS & SERVERS
++REQUESTS & RESPONSES
 
 <details>
-  <summary>13. Sample</summary>
+  <summary>13. Create a Server</summary>
 
 ```Javascript
+const http = require('http');
 
+const server = http.createServer((req, res) =>{
+    console.log('request made');
+});
+
+server.listen(3000, 'localhost', () => {
+    console.log('listening for requests on port 3000')
+})
 ```
 
 ```Javascript
-
-```
-
-```Javascript
-
+// listening for requests on port 3000
+// request made
 ```
 
 </details>
