@@ -311,18 +311,47 @@ server.listen(3000, 'localhost', () => {
 </details>
 
 <details>
-  <summary>14. Sample</summary>
+  <summary>14. Get Request URL and Method</summary>
 
 ```Javascript
 
+const http = require('http');
+
+const server = http.createServer((req, res) =>{
+    console.log('request made');
+    console.log("Url: ", req.url);
+    console.log("Method: ", req.method);
+    console.log("Headers: ", req.headers);
+    console.log("Body: ", req.body);
+});
+
+server.listen(3000, 'localhost', () => {
+    console.log('listening for requests on port 3000')
+})
 ```
 
 ```Javascript
-
-```
-
-```Javascript
-
+// listening for requests on port 3000
+// request made
+// Url:  /
+// Method:  GET
+// Headers:  {
+//   host: 'localhost:3000',
+//   connection: 'keep-alive',
+//   'sec-ch-ua': '"Chromium";v="106", "Google Chrome";v="106", "Not;A=Brand";v="99"',
+//   'sec-ch-ua-mobile': '?0',
+//   'sec-ch-ua-platform': '"macOS"',
+//   'upgrade-insecure-requests': '1',
+//   'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
+//   accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+//   'sec-fetch-site': 'none',
+//   'sec-fetch-mode': 'navigate',
+//   'sec-fetch-user': '?1',
+//   'sec-fetch-dest': 'document',
+//   'accept-encoding': 'gzip, deflate, br',
+//   'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8'
+// }
+// Body:  undefined
 ```
 
 </details>
