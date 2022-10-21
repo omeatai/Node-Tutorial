@@ -244,35 +244,42 @@ readStream.on('data', (chunk) => {
 </details>
 
 <details>
-  <summary>11. Sample</summary>
+  <summary>11. Write Stream</summary>
 
 ```Javascript
+const fs = require("fs");
 
-```
+const readStream = fs.createReadStream('./docs/blog2.txt',{ encoding: 'utf8' });
+const writeStream = fs.createWriteStream('./docs/blog3.txt');
 
-```Javascript
-
-```
-
-```Javascript
-
+readStream.on('data' , (chunk) => {
+    console.log('------ NEW CHUNK -----');
+    console.log(chunk);
+    writeStream.write('\nNEW CHUNK\n');
+    writeStream.write(chunk);
+});
 ```
 
 </details>
 
 <details>
-  <summary>12. Sample</summary>
+  <summary>12. Piping</summary>
 
 ```Javascript
+const fs = require("fs");
 
-```
+const readStream = fs.createReadStream('./docs/blog2.txt',{ encoding: 'utf8' });
+const writeStream = fs.createWriteStream('./docs/blog3.txt');
 
-```Javascript
+// readStream.on('data' , (chunk) => {
+//     console.log('------ NEW CHUNK -----');
+//     console.log(chunk);
+//     writeStream.write('\nNEW CHUNK\n');
+//     writeStream.write(chunk);
+// });
 
-```
-
-```Javascript
-
+// piping
+readStream.pipe(writeStream);
 ```
 
 </details>
