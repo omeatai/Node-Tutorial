@@ -392,7 +392,6 @@ const server = http.createServer((req, res) => {
     // console.log("Body: ", req.body);
 
     // set header content type
-
     res.setHeader('Content-Type', 'text/html');
     res.write('<head><link rel="stylesheet" href="#"></head>');
     res.write('<h1>Welcome!</h1>');
@@ -405,17 +404,38 @@ server.listen(3000, 'localhost', () => {
 })
 ```
 
-```Javascript
-
-```
-
 </details>
 
 <details>
-  <summary>16. Sample</summary>
+  <summary>16. Returning HTML Pages </summary>
 
 ```Javascript
 
+const http = require('http');
+const fs = require('fs');
+
+const server = http.createServer((req, res) => {
+    console.log('request made');
+
+    // set header content type
+    res.setHeader('Content-Type', 'text/html');
+
+    // send an html file.
+    fs.readFile('./views/index.html', (err, data) => {
+        if(err) {
+            console.log(err);
+            res.end();
+        } else {
+            res.write(data);
+            res.end();
+        }
+    })
+
+});
+
+server.listen(3000, 'localhost', () => {
+    console.log('listening for requests on port 3000')
+})
 ```
 
 ```Javascript
