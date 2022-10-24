@@ -491,7 +491,7 @@ server.listen(3000, 'localhost', () => {
 
 Status codes describe the type of response sent to the browser.
 
-```Javascript
+```markdown
 200- OK
 301- Resource moved
 404- Not found
