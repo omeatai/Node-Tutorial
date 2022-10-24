@@ -392,8 +392,10 @@ const server = http.createServer((req, res) => {
     // console.log("Body: ", req.body);
 
     // set header content type
+
     res.setHeader('Content-Type', 'text/html');
-    res.write('<h1>hWelcome!</h1>');
+    res.write('<head><link rel="stylesheet" href="#"></head>');
+    res.write('<h1>Welcome!</h1>');
     res.write('<h2>hello, ninjas</h2>');
     res.end();
 });
