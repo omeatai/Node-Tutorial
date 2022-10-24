@@ -382,7 +382,25 @@ server.listen(3000, 'localhost', () => {
 ```
 
 ```Javascript
+const http = require('http');
 
+const server = http.createServer((req, res) => {
+    console.log('request made');
+    // console.log("Url: ", req.url);
+    // console.log("Method: ", req.method);
+    // console.log("Headers: ", req.headers);
+    // console.log("Body: ", req.body);
+
+    // set header content type
+    res.setHeader('Content-Type', 'text/html');
+    res.write('<h1>hWelcome!</h1>');
+    res.write('<h2>hello, ninjas</h2>');
+    res.end();
+});
+
+server.listen(3000, 'localhost', () => {
+    console.log('listening for requests on port 3000')
+})
 ```
 
 ```Javascript
