@@ -357,7 +357,7 @@ server.listen(3000, 'localhost', () => {
 </details>
 
 <details>
-  <summary>15. Response - Set Header/summary>
+  <summary>15. Response - Set Header Content Type </summary>
 
 ```Javascript
 
