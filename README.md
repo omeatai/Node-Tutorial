@@ -487,7 +487,7 @@ server.listen(3000, 'localhost', () => {
 </details>
 
 <details>
-  <summary>18. Set Status Codes/summary>
+  <summary>18. Set Status Codes </summary>
 
 Status codes describe the type of response sent to the browser.
 
