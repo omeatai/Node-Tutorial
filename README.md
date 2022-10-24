@@ -357,10 +357,28 @@ server.listen(3000, 'localhost', () => {
 </details>
 
 <details>
-  <summary>15. Sample</summary>
+  <summary>15. Response - Set Header/summary>
 
 ```Javascript
 
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    console.log('request made');
+    console.log("Url: ", req.url);
+    console.log("Method: ", req.method);
+    console.log("Headers: ", req.headers);
+    console.log("Body: ", req.body);
+
+    // set header content type
+    res.setHeader('Content-Type', 'text/plain');
+    res.write('hello, ninjas');
+    res.end();
+});
+
+server.listen(3000, 'localhost', () => {
+    console.log('listening for requests on port 3000')
+})
 ```
 
 ```Javascript
