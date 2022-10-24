@@ -410,7 +410,6 @@ server.listen(3000, 'localhost', () => {
   <summary>16. Returning HTML Pages </summary>
 
 ```Javascript
-
 const http = require('http');
 const fs = require('fs');
 
@@ -428,6 +427,8 @@ const server = http.createServer((req, res) => {
         } else {
             res.write(data);
             res.end();
+            // OR
+            // res.end(data);
         }
     })
 
