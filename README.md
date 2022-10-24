@@ -499,11 +499,11 @@ Status codes describe the type of response sent to the browser.
 ```
 
 ```markdown
-100 Range-informational responses
-200 Range-success codes
-300 Range-codes for redirects
-400 Range-user or client error codes
-500 Range-server error codes
+100 Range- Informational Responses
+200 Range- Success codes
+300 Range- Codes for redirects
+400 Range- User or client error codes
+500 Range- Server error codes
 ```
 
 ```Javascript
