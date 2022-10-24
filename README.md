@@ -484,21 +484,18 @@ server.listen(3000, 'localhost', () => {
 })
 ```
 
-```Javascript
-
-```
-
-```Javascript
-
-```
-
 </details>
 
 <details>
   <summary>18. Sample</summary>
 
-```Javascript
+Status codes describe the type of response sent to the browser
 
+```Javascript
+200-OK
+301-Resource moved
+404-Not found
+500-Internal server error
 ```
 
 ```Javascript
