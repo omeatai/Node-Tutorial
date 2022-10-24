@@ -492,10 +492,10 @@ server.listen(3000, 'localhost', () => {
 Status codes describe the type of response sent to the browser.
 
 ```Javascript
-200-OK
-301-Resource moved
-404-Not found
-500-Internal server error
+200- OK
+301- Resource moved
+404- Not found
+500- Internal server error
 ```
 
 ```Javascript
