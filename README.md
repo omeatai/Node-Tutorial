@@ -603,14 +603,6 @@ server.listen(3000, 'localhost', () => {
 })
 ```
 
-```Javascript
-
-```
-
-```Javascript
-
-```
-
 </details>
 
 <details>
