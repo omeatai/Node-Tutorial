@@ -487,9 +487,9 @@ server.listen(3000, 'localhost', () => {
 </details>
 
 <details>
-  <summary>18. Sample</summary>
+  <summary>18. Status Codes/summary>
 
-Status codes describe the type of response sent to the browser
+Status codes describe the type of response sent to the browser.
 
 ```Javascript
 200-OK
