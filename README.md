@@ -498,8 +498,12 @@ Status codes describe the type of response sent to the browser.
 500- Internal server error
 ```
 
-```Javascript
-
+```markdown
+100 Range-informational responses
+200 Range-success codes
+300 Range-codes for redirects
+400 Range-user or client error codes
+500 Range-server error codes
 ```
 
 ```Javascript
