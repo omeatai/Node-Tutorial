@@ -608,7 +608,7 @@ server.listen(3000, 'localhost', () => {
 +NODE PACKAGE MANAGER (NPM)
 
 <details>
-  <summary>20. Install Nodemon/summary>
+  <summary>20. Install Nodemon </summary>
 
 ```Javascript
 npm install -g nodemon
@@ -618,10 +618,6 @@ yarn global add nodemon
 
 ```Javascript
 nodemon server
-```
-
-```Javascript
-
 ```
 
 </details>
