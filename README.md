@@ -714,29 +714,13 @@ package-lock.json:
 
 ```
 
-```Javascript
-
-```
-
-```Javascript
-
-```
-
 </details>
 
 <details>
-  <summary>23. Sample</summary>
+  <summary>23. Install all dependencies in Package.json</summary>
 
 ```Javascript
-
-```
-
-```Javascript
-
-```
-
-```Javascript
-
+npm install
 ```
 
 </details>
