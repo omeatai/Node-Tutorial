@@ -920,14 +920,6 @@ app.use((req, res) => {
 });
 ```
 
-```Javascript
-
-```
-
-```Javascript
-
-```
-
 </details>
 
 <details>
