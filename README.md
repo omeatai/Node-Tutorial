@@ -925,35 +925,52 @@ app.use((req, res) => {
 +VIEW ENGINES
 
 <details>
-  <summary>30. Sample</summary>
+  <summary>30. Install EJS</summary>
 
 ```Javascript
-
-```
-
-```Javascript
-
-```
-
-```Javascript
-
+npm install ejs
 ```
 
 </details>
 
 <details>
-  <summary>31. Sample</summary>
+  <summary>31. EJS Sample</summary>
 
 ```Javascript
-
+let ejs = require('ejs');
+let people = ['geddy', 'neil', 'alex'];
+let html = ejs.render('<%= people.join(", "); %>', {people: people});
 ```
 
 ```Javascript
-
+ejs ./template_file.ejs -f data_file.json -o ./output.html
 ```
 
 ```Javascript
+<script src="ejs.js"></script>
+<script>
+  let people = ['geddy', 'neil', 'alex'];
+  let html = ejs.render('<%= people.join(", "); %>', {people: people});
+</script>
+```
 
+```Javascript
+<% if (user) { %>
+  <h2><%= user.name %></h2>
+<% } %>
+```
+
+```Javascript
+let template = ejs.compile(str, options);
+template(data);
+// => Rendered HTML string
+
+ejs.render(str, data, options);
+// => Rendered HTML string
+
+ejs.renderFile(filename, data, options, function(err, str){
+    // str => Rendered HTML string
+});
 ```
 
 </details>
