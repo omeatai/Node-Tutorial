@@ -832,29 +832,49 @@ app.get('/about', (req, res) => {
 });
 ```
 
-```Javascript
-
-```
-
-```Javascript
-
-```
-
 </details>
 
 <details>
-  <summary>28. Sample</summary>
+  <summary>28. Create Nav Links</summary>
 
-```Javascript
+Index.html:
 
+```html
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Node.js Crash Course</title>
+    </head>
+    <body>
+        <nav>
+            <a href="/"> Homepage </a>
+            <a href="/about"> About page </a>
+        </nav>
+        <h1>Home</h1>
+        <h2>Your path to becoming a Node.js ninja!</h2>
+    </body>
+</html>
 ```
 
-```Javascript
+about.html:
 
-```
-
-```Javascript
-
+```html
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Node.js Crash Course</title>
+    </head>
+    <body>
+        <nav>
+            <a href="/"> Homepage </a>
+            <a href="/about"> About page </a>
+        </nav>
+        <h1>About</h1>
+        <h2>Your path to becoming a Node.js ninja!</h2>
+    </body>
+</html>
 ```
 
 </details>
