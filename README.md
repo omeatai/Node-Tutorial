@@ -623,24 +623,35 @@ nodemon server
 </details>
 
 <details>
-  <summary>21. Sample</summary>
+  <summary>21. Create Package.json dependencies locally/summary>
 
 ```Javascript
-
+npm init
 ```
 
 ```Javascript
-
-```
-
-```Javascript
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
 
 ```
 
 </details>
 
 <details>
-  <summary>22. Sample</summary>
+  <summary>22. Install Lodash</summary>
 
 ```Javascript
 
