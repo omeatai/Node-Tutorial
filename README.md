@@ -623,7 +623,7 @@ nodemon server
 </details>
 
 <details>
-  <summary>21. Create Package.json dependencies locally/summary>
+  <summary>21. Create Package.json dependencies locally </summary>
 
 ```Javascript
 npm init
