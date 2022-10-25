@@ -748,14 +748,32 @@ app.listen(port, () => {
 </details>
 
 <details>
-  <summary>25. Sample</summary>
+  <summary>25. Install Express</summary>
 
 ```Javascript
-
+npm install express --save
 ```
 
 ```Javascript
-
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "lodash": "^4.17.21"
+  }
+}
 ```
 
 ```Javascript
