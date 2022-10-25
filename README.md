@@ -776,25 +776,24 @@ npm install express --save
 }
 ```
 
-```Javascript
-
-```
-
 </details>
 
 <details>
-  <summary>26. Sample</summary>
+  <summary>26. Display Home Page</summary>
 
 ```Javascript
+const express = require('express');
 
-```
+// express app
+const app = express();
 
-```Javascript
+// listen for requests
+app.listen(3000);
 
-```
-
-```Javascript
-
+// get home page
+app.get('/', (req, res) => {
+    res.send('<h1>Home page</h1>');
+});
 ```
 
 </details>
