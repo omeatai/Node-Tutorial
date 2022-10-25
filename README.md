@@ -801,10 +801,33 @@ app.get('/', (req, res) => {
 </details>
 
 <details>
-  <summary>27. Sample</summary>
+  <summary>27. Routing HTML Pages</summary>
+
+app.js:
 
 ```Javascript
+const express = require('express');
+const path = require('path');
 
+const homePage = path.join(__dirname, 'views/index.html')
+const aboutPage = path.join(__dirname, 'views/about.html')
+const _404Page = path.join(__dirname, 'views/404.html')
+
+// express app
+const app = express();
+
+// listen for requests
+app.listen(3000);
+
+// get home page
+app.get('/', (req, res) => {
+    res.sendFile(homePage);
+});
+
+// get about page
+app.get('/about', (req, res) => {
+    res.sendFile(aboutPage);
+});
 ```
 
 ```Javascript
