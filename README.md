@@ -612,6 +612,8 @@ server.listen(3000, 'localhost', () => {
 
 ```Javascript
 npm install -g nodemon
+
+yarn global add nodemon
 ```
 
 ```Javascript
