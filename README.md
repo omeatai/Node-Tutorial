@@ -608,14 +608,14 @@ server.listen(3000, 'localhost', () => {
 +NODE PACKAGE MANAGER (NPM)
 
 <details>
-  <summary>20. Sample</summary>
+  <summary>20. Install Nodemon/summary>
 
 ```Javascript
-
+npm install -g nodemon
 ```
 
 ```Javascript
-
+nodemon server
 ```
 
 ```Javascript
