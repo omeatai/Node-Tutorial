@@ -942,11 +942,11 @@ let people = ['geddy', 'neil', 'alex'];
 let html = ejs.render('<%= people.join(", "); %>', {people: people});
 ```
 
-```Javascript
+```bash
 ejs ./template_file.ejs -f data_file.json -o ./output.html
 ```
 
-```Javascript
+```html
 <script src="ejs.js"></script>
 <script>
   let people = ['geddy', 'neil', 'alex'];
@@ -954,7 +954,7 @@ ejs ./template_file.ejs -f data_file.json -o ./output.html
 </script>
 ```
 
-```Javascript
+```html
 <% if (user) { %>
   <h2><%= user.name %></h2>
 <% } %>
