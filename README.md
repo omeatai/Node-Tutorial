@@ -882,8 +882,42 @@ about.html:
 <details>
   <summary>29. Redirects & 404's</summary>
 
-```Javascript
+app.js:
 
+```Javascript
+const express = require('express');
+const path = require('path');
+
+const homePage = path.join(__dirname, 'views/index.html')
+const aboutPage = path.join(__dirname, 'views/about.html')
+const _404Page = path.join(__dirname, 'views/404.html')
+
+// express app
+const app = express();
+
+// listen for requests
+app.listen(3000);
+
+// get home page
+app.get('/', (req, res) => {
+    res.sendFile(homePage);
+});
+
+// get about page
+app.get('/about', (req, res) => {
+    res.sendFile(aboutPage);
+});
+
+// redirects
+app.get('/about-us' , (req, res) => {
+    res.redirect('/about');
+});
+
+// 404 page
+app.use((req, res) => {
+    res.status(404).sendFile(_404Page);
+    // res.sendFile('./views/404.html', { root: __dirname });
+});
 ```
 
 ```Javascript
