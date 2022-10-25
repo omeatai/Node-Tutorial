@@ -5,7 +5,7 @@ Learn NodeJS by Ifeanyi Omeata
 
 ---
 
-### [1-NODE CRASH COURSE 1 - NET NINJA](#)
+### [1-NODE CRASH COURSE - NET NINJA](#)
 
 +INTRODUCTION
 
