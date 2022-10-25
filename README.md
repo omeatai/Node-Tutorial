@@ -880,7 +880,7 @@ about.html:
 </details>
 
 <details>
-  <summary>29. Sample</summary>
+  <summary>29. Redirects & 404's</summary>
 
 ```Javascript
 
@@ -898,6 +898,176 @@ about.html:
 
 <details>
   <summary>30. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>31. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>32. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>33. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>34. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>35. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>36. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>37. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>38. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>39. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>40. Sample</summary>
 
 ```Javascript
 
