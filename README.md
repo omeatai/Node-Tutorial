@@ -976,18 +976,34 @@ ejs.renderFile(filename, data, options, function(err, str){
 </details>
 
 <details>
-  <summary>32. Sample</summary>
+  <summary>32. Create Index.ejs page</summary>
 
-```Javascript
+Index.ejs:
 
-```
-
-```Javascript
-
-```
-
-```Javascript
-
+```html
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Blog Ninja</title>
+    </head>
+    <body>
+        <nav>
+            <div class= "site-title">
+                <a href="/"><h1>Blog Ninja</h1></a>
+                <p>A Net Ninja Site</p>
+            </div>
+            <ul>
+                <li><a href="/">Blogs</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/blogs/create">New Blog</a></li>
+            </ul>
+        </nav>
+        <div class= "blogs content">
+            <h2>All Blogs</h2>
+        </div>
+    </body>
+</html>
 ```
 
 </details>
