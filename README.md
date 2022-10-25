@@ -822,11 +822,13 @@ app.listen(3000);
 // get home page
 app.get('/', (req, res) => {
     res.sendFile(homePage);
+    // res.sendFile('./views/index.html' , { root: __dirname });
 });
 
 // get about page
 app.get('/about', (req, res) => {
     res.sendFile(aboutPage);
+    // res.sendFile('./views/about.html' , { root: __dirname });
 });
 ```
 
