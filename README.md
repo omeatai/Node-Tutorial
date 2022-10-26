@@ -1009,10 +1009,47 @@ Index.ejs:
 </details>
 
 <details>
-  <summary>33. Sample</summary>
+  <summary>33. Render EJS Template</summary>
 
 ```Javascript
+const express = require('express');
+const path = require('path');
 
+const homePage = path.join(__dirname, 'views/index.html')
+const aboutPage = path.join(__dirname, 'views/about.html')
+const _404Page = path.join(__dirname, 'views/404.html')
+
+// express app
+const app = express();
+
+// register view engine
+app.set('view engine', 'ejs');
+// app.set('views', 'myviews');
+
+// listen for requests
+app.listen(3000);
+
+// get home page
+app.get('/', (req, res) => {
+    //res.sendFile(homePage);
+    res.render('index');
+});
+
+// get about page
+app.get('/about', (req, res) => {
+    res.sendFile(aboutPage);
+});
+
+// redirects
+app.get('/about-us' , (req, res) => {
+    res.redirect('/about');
+});
+
+// 404 page
+app.use((req, res) => {
+    res.status(404).sendFile(_404Page);
+    // res.sendFile('./views/404.html', { root: __dirname });
+});
 ```
 
 ```Javascript
