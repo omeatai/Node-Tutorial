@@ -1076,10 +1076,6 @@ About.ejs:
 const express = require('express');
 const path = require('path');
 
-const homePage = path.join(__dirname, 'views/index.html')
-const aboutPage = path.join(__dirname, 'views/about.html')
-const _404Page = path.join(__dirname, 'views/404.html')
-
 // express app
 const app = express();
 
@@ -1098,7 +1094,7 @@ app.get('/', (req, res) => {
 
 // get about page
 app.get('/about', (req, res) => {
-    res.sendFile(aboutPage);
+    res.render('about');
 });
 
 // redirects
@@ -1108,9 +1104,10 @@ app.get('/about-us' , (req, res) => {
 
 // 404 page
 app.use((req, res) => {
-    res.status(404).sendFile(_404Page);
+    res.status(404).render('404');
     // res.sendFile('./views/404.html', { root: __dirname });
 });
+
 ```
 
 </details>
