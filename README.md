@@ -976,7 +976,7 @@ ejs.renderFile(filename, data, options, function(err, str){
 </details>
 
 <details>
-  <summary>32. Create Index.ejs page</summary>
+  <summary>32. Create EJS Pages</summary>
 
 Index.ejs:
 
@@ -1004,6 +1004,67 @@ Index.ejs:
         </div>
     </body>
 </html>
+```
+
+About.ejs:
+
+```Javascript
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Ninja</title>
+</head>
+<body>
+    <nav>
+        <div class="site-title">
+            <a href="/"><h1>Blog Ninja</h1></a>
+            <p>A Net Ninja Site</p>
+        </div>
+        <ul>
+            <li><a href="/">Blogs</a></1li>
+            <li><a href="/about">About</a></1li>
+            <li><a href="/blogs/create">New Blog</a></1li>
+        </ul>
+    </nav>
+    <div class="about content">
+        <h2>About Us</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia quibusdam quaerat illo a </p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia quibusdam quaerat illo a </p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia quibusdam quaerat illo a </p>
+    </div>
+</body>
+</html>
+
+```
+
+404.ejs:
+
+```Javascript
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Ninja</title>
+</head>
+<body>
+    <nav>
+        <div class="site-title">
+            <a href="/"><h1>Blog Ninja</h1></a>
+            <p>A Net Ninja Site</p>
+        </div>
+        <ul>
+            <li><a href="/">Blogs</a></1li>
+            <li><a href="/about">About</a></1li>
+            <li><a href="/blogs/create">New Blog</a></1li>
+        </ul>
+    </nav>
+    <div class="not-found content">
+        <h2>OOPS, page not found :)</h2>
+    </div>
+</body>
+</html>
+
 ```
 
 </details>
@@ -1050,14 +1111,6 @@ app.use((req, res) => {
     res.status(404).sendFile(_404Page);
     // res.sendFile('./views/404.html', { root: __dirname });
 });
-```
-
-```Javascript
-
-```
-
-```Javascript
-
 ```
 
 </details>
