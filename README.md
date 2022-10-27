@@ -1202,7 +1202,7 @@ create.ejs:
 <details>
   <summary>35. Displaying Internal Dynamic content</summary>
 
-```Javascript
+```html
 <div class= "site-title">
     <a href="/"><h1>Blog Ninja</h1></a>
     <p>A Net Ninja Site</p>
@@ -1214,18 +1214,38 @@ create.ejs:
 </details>
 
 <details>
-  <summary>36. Displaying External Dynamic content</summary>
+  <summary>36. Displaying Context Dynamic content</summary>
 
 ```Javascript
+// get home page
+app.get('/', (req, res) => {
+    //res.sendFile(homePage);
+    res.render('index', { title: 'Home' });
+});
+
+// get about page
+app.get('/about', (req, res) => {
+    res.render('about', { title: 'About' });
+});
+
+// redirects
+app.get('/about-us' , (req, res) => {
+    res.redirect('/about');
+});
+
+// render create blog page
+app.get('/blogs/create', (req, res) => {
+    res.render('create', { title: 'Create a new blog' });
+});
 
 ```
 
-```Javascript
-
-```
-
-```Javascript
-
+```html
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Ninja | <%= title %> </title>
+</head>
 ```
 
 </details>
