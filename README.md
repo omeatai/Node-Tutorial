@@ -1113,18 +1113,88 @@ app.use((req, res) => {
 </details>
 
 <details>
-  <summary>34. Sample</summary>
+  <summary>34. Render Create Blog</summary>
+
+app.js:
 
 ```Javascript
+const express = require('express');
+const path = require('path');
+
+// express app
+const app = express();
+
+// register view engine
+app.set('view engine', 'ejs');
+// app.set('views', 'myviews');
+
+// listen for requests
+app.listen(3000);
+
+// get home page
+app.get('/', (req, res) => {
+    //res.sendFile(homePage);
+    res.render('index');
+});
+
+// get about page
+app.get('/about', (req, res) => {
+    res.render('about');
+});
+
+// redirects
+app.get('/about-us' , (req, res) => {
+    res.redirect('/about');
+});
+
+// render create blog page
+app.get('/blogs/create', (req, res) => {
+    res.render('create');
+});
+
+// 404 page
+app.use((req, res) => {
+    res.status(404).render('404');
+    // res.sendFile('./views/404.html', { root: __dirname });
+});
 
 ```
 
-```Javascript
+create.ejs:
 
-```
+```html
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Blog Ninja</title>
+    </head>
+    <body>
+        <nav>
+            <div class= "site-title">
+                <a href="/"><h1>Blog Ninja</h1></a>
+                <p>A Net Ninja Site</p>
+            </div>
+            <ul>
+                <li><a href="/">Blogs</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/blogs/create">New Blog</a></li>
+            </ul>
+        </nav>
 
-```Javascript
-
+        <div class= "create-blog content">
+            <form>
+                <label for="title">Blog Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="snippet">Blog Snippet:</label>
+                <input type="text" id="snippet" name="snippet" required>
+                <label for="body">Blog Body:</label>
+                <textarea id="body" name="body" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>
 ```
 
 </details>
