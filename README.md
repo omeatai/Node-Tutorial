@@ -1200,24 +1200,21 @@ create.ejs:
 </details>
 
 <details>
-  <summary>35. Sample</summary>
+  <summary>35. Displaying Internal Dynamic content</summary>
 
 ```Javascript
-
-```
-
-```Javascript
-
-```
-
-```Javascript
-
+<div class= "site-title">
+    <a href="/"><h1>Blog Ninja</h1></a>
+    <p>A Net Ninja Site</p>
+    <% const firstName = 'Fred' %>
+    <p>His First Name is <%= firstName %>.</p>
+</div>
 ```
 
 </details>
 
 <details>
-  <summary>36. Sample</summary>
+  <summary>36. Displaying External Dynamic content</summary>
 
 ```Javascript
 
