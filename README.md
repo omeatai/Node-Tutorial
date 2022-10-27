@@ -1238,6 +1238,12 @@ app.get('/blogs/create', (req, res) => {
     res.render('create', { title: 'Create a new blog' });
 });
 
+// 404 page
+app.use((req, res) => {
+    res.status(404).render('404', { title: '404' });
+    // res.sendFile('./views/404.html', { root: __dirname });
+});
+
 ```
 
 ```html
@@ -1251,18 +1257,31 @@ app.get('/blogs/create', (req, res) => {
 </details>
 
 <details>
-  <summary>37. Sample</summary>
+  <summary>37. Iterate through Blogs Array</summary>
 
 ```Javascript
-
+// get home page
+app.get('/', (req, res) => {
+    const blogs = [
+        { title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur' },
+        { title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur' },
+        { title: 'How to defeat bowser', snippet: 'Lorem ipsum dolor sit amet consectetur' },
+    ];
+    res.render('index', { title: 'Home', blogs });
+});
 ```
 
-```Javascript
-
-```
-
-```Javascript
-
+```html
+<div class= "blogs content">
+    <h2>All Blogs</h2>
+    <% blogs.forEach(function(blog){ %>
+        <div class="blog-preview">
+            <h2><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h2>
+            <p>Written by <%= blog.author %></p>
+            <p><%= blog.snippet %></p>
+        </div>
+    <% }) %>
+</div>
 ```
 
 </details>
