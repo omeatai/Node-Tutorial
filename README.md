@@ -2026,6 +2026,8 @@ app.get('/add-blog', (req, res) => {
 });
 ```
 
+app.js:
+
 ```Javascript
 const express = require('express');
 const path = require('path');
@@ -2132,6 +2134,8 @@ app.get('/all-blogs', (req, res) => {
 });
 
 ```
+
+app.js:
 
 ```Javascript
 const express = require('express');
