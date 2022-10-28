@@ -1411,7 +1411,110 @@ Footer.ejs:
 </details>
 
 <details>
-  <summary>39. Sample</summary>
+  <summary>39. Styling Head</summary>
+
+```html
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Ninja | <%= title %></title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+    body{
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+      font-family: 'Noto Serif', serif;
+      max-width: 1200px;
+    }
+    p, h1, h2, h3, a, ul{
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      color: #222;
+    }
+
+    /* nav & footer styles */
+    nav{
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 60px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+      text-transform: uppercase;
+    }
+    nav ul{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    nav li{
+      list-style-type: none;
+      margin-left: 20px;
+    }
+    nav h1{
+      font-size: 3em;
+    }
+    nav p, nav a{
+      color: #777;
+      font-weight: 300;
+    }
+    footer{
+      color: #777;
+      text-align: center;
+      margin: 80px auto 20px;
+    }
+    h2{
+      margin-bottom: 40px;
+    }
+    h3{
+      text-transform: capitalize;
+      margin-bottom: 8px;
+    }
+    .content{
+      margin-left: 20px;
+    }
+
+    /* index styles */
+
+    /* details styles */
+
+    /* create styles */
+    .create-blog form{
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .create-blog input,
+    .create-blog textarea{
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+    .create-blog label{
+      display: block;
+      margin-top: 24px;
+    }
+    textarea{
+      height: 120px;
+    }
+    .create-blog button{
+      margin-top: 20px;
+      background: crimson;
+      color: white;
+      padding: 6px;
+      border: 0;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+```
+
+</details>
+
+<details>
+  <summary>40. Sample</summary>
 
 ```Javascript
 
@@ -1428,7 +1531,160 @@ Footer.ejs:
 </details>
 
 <details>
-  <summary>40. Sample</summary>
+  <summary>41. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>42. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>43. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>44. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>45. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>46. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>47. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>48. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>49. Sample</summary>
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+```Javascript
+
+```
+
+</details>
+
+<details>
+  <summary>50. Sample</summary>
 
 ```Javascript
 
