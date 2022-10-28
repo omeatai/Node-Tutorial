@@ -1966,8 +1966,8 @@ app.use((req, res) => {
 
 ```
 
-```markdown
-connected to db
+```Javascript
+// connected to db
 ```
 
 </details>
