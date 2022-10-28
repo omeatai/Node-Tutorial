@@ -1853,24 +1853,28 @@ public/styles.css:
 +MONGODB
 
 <details>
-  <summary>43. Sample</summary>
+  <summary>43. Connect to MongoDB</summary>
 
-```Javascript
-
+```markdown
+Mongodb Atlas
+https://www.mongodb.com/cloud/atlas
 ```
 
 ```Javascript
-
-```
-
-```Javascript
-
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://admin:<password>@cluster0.ujjnbjl.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 ```
 
 </details>
 
 <details>
-  <summary>44. Sample</summary>
+  <summary>44. Connect with Mongoose</summary>
 
 ```Javascript
 
