@@ -1346,18 +1346,66 @@ app.use((req, res) => {
 </details>
 
 <details>
-  <summary>38. Using Partials</summary>
+  <summary>38. Include Partials</summary>
 
-```Javascript
+Index.ejs:
 
+```html
+<html lang="en">
+    <%- include('./partials/head.ejs')  %>
+    <body>
+        <%- include('./partials/nav.ejs')  %>
+        <div class= "blogs content">
+            <h2>All Blogs</h2>
+            <% if(blogs.length > 0){ %>
+                <% blogs.forEach(blog => { %>
+                    <div class="blog-preview">
+                        <h3 class="title"><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h3>
+                        <p class="author">Written by <%= blog.author %></p>
+                        <p class="snippet"><%= blog.snippet %></p>
+                    </div>
+                <% }) %>
+            <%  }else{ %>
+                <p>No blogs to show</p>
+            <% } %>
+        </div>
+        <%- include('./partials/footer.ejs')  %>
+    </body>
+</html>
 ```
 
-```Javascript
+Nav.ejs:
 
+```html
+<nav>
+    <div class= "site-title">
+        <a href="/"><h1>Blog Ninja</h1></a>
+        <p>A Net Ninja Site</p>
+    </div>
+    <ul>
+        <li><a href="/">Blogs</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blogs/create">New Blog</a></li>
+    </ul>
+</nav>
 ```
 
-```Javascript
+Head.ejs:
 
+```html
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Blog Ninja | <%= title %> </title>
+</head>
+```
+
+Footer.ejs:
+
+```html
+<footer>
+    Copyright &copy; 2022
+</footer>
 ```
 
 </details>
