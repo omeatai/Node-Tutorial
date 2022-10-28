@@ -1973,18 +1973,31 @@ app.use((req, res) => {
 </details>
 
 <details>
-  <summary>45. Sample</summary>
+  <summary>45. Create Database Model and Schema</summary>
+
+models/blog.js:
 
 ```Javascript
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-```
+const blogSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    snippet: {
+        type: String,
+        required: true
+    },
+    body: {
+        type: String,
+        required: true
+    }
+}, { timestamps: true });
 
-```Javascript
-
-```
-
-```Javascript
-
+const Blog = mongoose.model('Blog', blogSchema);
+module.exports = Blog;
 ```
 
 </details>
