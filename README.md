@@ -1260,6 +1260,19 @@ app.use((req, res) => {
   <summary>37. Iterate through Blogs Array</summary>
 
 ```Javascript
+const express = require('express');
+const path = require('path');
+
+// express app
+const app = express();
+
+// register view engine
+app.set('view engine', 'ejs');
+// app.set('views', 'myviews');
+
+// listen for requests
+app.listen(3000);
+
 // get home page
 app.get('/', (req, res) => {
     const blogs = [
@@ -1269,25 +1282,71 @@ app.get('/', (req, res) => {
     ];
     res.render('index', { title: 'Home', blogs });
 });
+
+// get about page
+app.get('/about', (req, res) => {
+    res.render('about', { title: 'About' });
+});
+
+// redirects
+app.get('/about-us' , (req, res) => {
+    res.redirect('/about');
+});
+
+// render create blog page
+app.get('/blogs/create', (req, res) => {
+    res.render('create', { title: 'Create a new blog' });
+});
+
+// 404 page
+app.use((req, res) => {
+    res.status(404).render('404', { title: '404' });
+    // res.sendFile('./views/404.html', { root: __dirname });
+});
+
 ```
 
 ```html
-<div class= "blogs content">
-    <h2>All Blogs</h2>
-    <% blogs.forEach(function(blog){ %>
-        <div class="blog-preview">
-            <h2><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h2>
-            <p>Written by <%= blog.author %></p>
-            <p><%= blog.snippet %></p>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Blog Ninja | <%= title %> </title>
+    </head>
+    <body>
+        <nav>
+            <div class= "site-title">
+                <a href="/"><h1>Blog Ninja</h1></a>
+                <p>A Net Ninja Site</p>
+            </div>
+            <ul>
+                <li><a href="/">Blogs</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/blogs/create">New Blog</a></li>
+            </ul>
+        </nav>
+        <div class= "blogs content">
+            <h2>All Blogs</h2>
+            <% if(blogs.length > 0){ %>
+                <% blogs.forEach(blog => { %>
+                    <div class="blog-preview">
+                        <h3 class="title"><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h3>
+                        <p class="author">Written by <%= blog.author %></p>
+                        <p class="snippet"><%= blog.snippet %></p>
+                    </div>
+                <% }) %>
+            <%  }else{ %>
+                <p>No blogs to show</p>
+            <% } %>
         </div>
-    <% }) %>
-</div>
+    </body>
+</html>
 ```
 
 </details>
 
 <details>
-  <summary>38. Sample</summary>
+  <summary>38. Using Partials</summary>
 
 ```Javascript
 
