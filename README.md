@@ -1513,6 +1513,8 @@ Footer.ejs:
 
 </details>
 
++MIDDLEWARES
+
 <details>
   <summary>40. Sample</summary>
 
