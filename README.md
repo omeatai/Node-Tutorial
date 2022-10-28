@@ -2003,7 +2003,7 @@ module.exports = Blog;
 </details>
 
 <details>
-  <summary>46. Getting and Saving Model Data</summary>
+  <summary>46. Saving a single Blog</summary>
 
 ```Javascript
 const Blog = require('./models/blog');
@@ -2117,18 +2117,131 @@ app.use((req, res) => {
 </details>
 
 <details>
-  <summary>47. Sample</summary>
+  <summary>47. Getting all Blogs</summary>
 
 ```Javascript
+//get all blogs
+app.get('/all-blogs', (req, res) => {
+    Blog.find()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
 
 ```
 
 ```Javascript
+const express = require('express');
+const path = require('path');
+const morgan = require('morgan')
+const mongoose = require('mongoose');
+const Blog = require('./models/blog');
+
+// express app
+const app = express();
+
+// register view engine
+app.set('view engine', 'ejs');
+// app.set('views', 'myviews');
+
+const dbURI = 'mongodb+srv://admin:admin123@cluster0.ujjnbjl.mongodb.net/blog-db?retryWrites=true&w=majority';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then((result) => {
+        // listen for requests
+        app.listen(3000);
+        console.log('connected to db');
+    })
+    .catch((err) => console.log(err));
+
+// static files
+app.use(express.static('public'));
+
+// mongoose sandbox routes
+// add blog
+app.get('/add-blog', (req, res) => {
+    const blog = new Blog({
+        title: 'new blog 2',
+        snippet: 'about my new blog',
+        body: 'more about my new blog'
+    });
+
+    blog.save()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+//get all blogs
+app.get('/all-blogs', (req, res) => {
+    Blog.find()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+// get home page
+app.get('/', (req, res) => {
+    const blogs = [
+        { title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur' },
+        { title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur' },
+        { title: 'How to defeat bowser', snippet: 'Lorem ipsum dolor sit amet consectetur' },
+    ];
+    res.render('index', { title: 'Home', blogs });
+});
+
+// get about page
+app.get('/about', (req, res) => {
+    res.render('about', { title: 'About' });
+});
+
+// redirects
+app.get('/about-us' , (req, res) => {
+    res.redirect('/about');
+});
+
+// render create blog page
+app.get('/blogs/create', (req, res) => {
+    res.render('create', { title: 'Create a new blog' });
+});
+
+// 404 page
+app.use((req, res) => {
+    res.status(404).render('404', { title: '404' });
+    // res.sendFile('./views/404.html', { root: __dirname });
+});
 
 ```
 
 ```Javascript
-
+[
+  {
+  "_id": "635bd60ce18a55b9822dc59a",
+  "title": "new blog 2",
+  "snippet": "about my new blog",
+  "body": "more about my new blog",
+  "createdAt": "2022-10-28T13:15:56.807Z",
+  "updatedAt": "2022-10-28T13:15:56.807Z",
+  "__v": 0
+  },
+  {
+  "_id": "635bd7cfe18a55b9822dc59c",
+  "title": "new blog 2",
+  "snippet": "about my new blog",
+  "body": "more about my new blog",
+  "createdAt": "2022-10-28T13:23:27.292Z",
+  "updatedAt": "2022-10-28T13:23:27.292Z",
+  "__v": 0
+  }
+]
 ```
 
 </details>
