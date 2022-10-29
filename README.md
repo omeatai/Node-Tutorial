@@ -2597,10 +2597,32 @@ app.use((req, res) => {
 </details>
 
 <details>
-  <summary>52. Sample</summary>
+  <summary>52. Get a single blog with Route [/blogs/:id]</summary>
 
-```Javascript
-
+```html
+<html lang="en">
+    <%- include('./partials/head.ejs')  %>
+    <body>
+        <%- include('./partials/nav.ejs')  %>
+        <div class= "blogs content">
+            <h2>All Blogs</h2>
+            <% if(blogs.length > 0){ %>
+                <% blogs.forEach(blog => { %>
+                    <div class="blog-preview">
+                        <a class="single" href="/blogs/<%= blog._id %>">
+                            <h3 class="title"><%= blog.title %></h3>
+                            <p class="author">Written by <%= blog.author %></p>
+                            <p class="snippet"><%= blog.snippet %></p>
+                        </a>
+                    </div>
+                <% }) %>
+            <%  }else{ %>
+                <p>No blogs to show</p>
+            <% } %>
+        </div>
+        <%- include('./partials/footer.ejs')  %>
+    </body>
+</html>
 ```
 
 ```Javascript
