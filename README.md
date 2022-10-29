@@ -2379,8 +2379,24 @@ app.use((req, res) => {
 
 </details>
 
++REQUESTS
+
 <details>
-  <summary>49. Get Route [/blogs]</summary>
+  <summary>49. REQUESTS</summary>
+
+```Javascript
+localhost:3000/blogs        -----> GET
+localhost:3000/blogs/create -----> GET
+localhost:3000/blogs        -----> POST
+localhost:3000/blogs/:id    -----> GET
+localhost:3000/blogs/:id    -----> DELETE
+localhost:3000/blogs/:id    -----> PUT
+```
+
+</details>
+
+<details>
+  <summary>50. Get Request with Route [/blogs]</summary>
 
 ```Javascript
 // blogs routes
@@ -2453,23 +2469,6 @@ app.use((req, res) => {
     res.status(404).render('404', { title: '404' });
     // res.sendFile('./views/404.html', { root: __dirname });
 });
-
-```
-
-</details>
-
-<details>
-  <summary>50. Sample</summary>
-
-```Javascript
-
-```
-
-```Javascript
-
-```
-
-```Javascript
 
 ```
 
