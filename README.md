@@ -2382,7 +2382,7 @@ app.use((req, res) => {
 +REQUESTS
 
 <details>
-  <summary>49. REQUESTS</summary>
+  <summary>49. List of Requests</summary>
 
 ```Javascript
 localhost:3000/blogs        -----> GET
