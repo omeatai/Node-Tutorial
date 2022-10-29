@@ -2385,12 +2385,12 @@ app.use((req, res) => {
   <summary>49. List of Requests</summary>
 
 ```Javascript
-localhost:3000/blogs        -----> GET (Get a list of blogs)
-localhost:3000/blogs/create -----> GET (Render a form to create a new blog)
-localhost:3000/blogs        -----> POST (Create a new blog)
-localhost:3000/blogs/:id    -----> GET (Get a single blog)
-localhost:3000/blogs/:id    -----> DELETE (Delete a single blog)
-localhost:3000/blogs/:id    -----> PUT  (Update a single blog)
+// localhost:3000/blogs        -----> GET (Get a list of blogs)
+// localhost:3000/blogs/create -----> GET (Render a form to create a new blog)
+// localhost:3000/blogs        -----> POST (Create a new blog)
+// localhost:3000/blogs/:id    -----> GET (Get a single blog)
+// localhost:3000/blogs/:id    -----> DELETE (Delete a single blog)
+// localhost:3000/blogs/:id    -----> PUT  (Update a single blog)
 ```
 
 </details>
