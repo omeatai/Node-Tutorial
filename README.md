@@ -2533,7 +2533,7 @@ const app = express();
 // register view engine
 app.set('view engine', 'ejs');
 
-const dbURI = 'mongodb+srv://admin:admin123@cluster0.ujjnbjl.mongodb.net/blog-db?retryWrites=true&w=majority';
+const dbURI = "mongodb+srv://<accountName>:<password>@cluster0.ujjnbjl.mongodb.net/<dbname>?retryWrites=true&w=majority";
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => {
         // listen for requests
@@ -2680,7 +2680,7 @@ const app = express();
 // register view engine
 app.set('view engine', 'ejs');
 
-const dbURI = 'mongodb+srv://admin:admin123@cluster0.ujjnbjl.mongodb.net/blog-db?retryWrites=true&w=majority';
+const dbURI = "mongodb+srv://<accountName>:<password>@cluster0.ujjnbjl.mongodb.net/<dbname>?retryWrites=true&w=majority";
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => {
         // listen for requests
