@@ -2651,6 +2651,21 @@ details.ejs:
 </html>
 ```
 
+style.css:
+
+```css
+/* index styles */
+      .blogs a{
+        display: block;
+        margin: 40px 0;
+        padding-left: 30px;
+        border-left: 6px solid crimson;
+      }
+      .blogs a:hover h3{
+        color: crimson;
+      }
+```
+
 ```Javascript
 // Get a single blog
 app.get('/blogs/:id', (req, res) => {
@@ -2754,14 +2769,16 @@ app.use((req, res) => {
 
 ```
 
+
+
+
+
 </details>
 
 <details>
   <summary>53. Sample</summary>
 
-```Javascript
 
-```
 
 ```Javascript
 
