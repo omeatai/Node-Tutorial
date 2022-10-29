@@ -2449,6 +2449,7 @@ app.get('/about', (req, res) => {
 });
 
 // blogs routes
+// Get all Blogs
 app.get('/blogs' , (req, res) => {
     Blog.find({}).sort({ createdAt: -1 })
         .then((result) => {
@@ -2597,7 +2598,9 @@ app.use((req, res) => {
 </details>
 
 <details>
-  <summary>52. Get a single blog with Route [/blogs/:id]</summary>
+  <summary>52. Get a Single blog with Route [/blogs/:id]</summary>
+
+index.ejs:
 
 ```html
 <html lang="en">
@@ -2625,11 +2628,129 @@ app.use((req, res) => {
 </html>
 ```
 
-```Javascript
+details.ejs:
 
+```html
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="details content">
+    <h2><%= blog.title %></h2>
+    <div class="content">
+      <p><%= blog.body %></p>
+    </div>
+    <a class="delete" data-doc="<%= blog._id %>">delete</a>
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+
+</body>
+</html>
 ```
 
 ```Javascript
+// Get a single blog
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findById(id)
+        .then((result) => {
+            res.render('details', { blog: result, title: 'Blog Details' });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+```
+
+app.js:
+
+```Javascript
+const express = require('express');
+const path = require('path');
+const morgan = require('morgan')
+const mongoose = require('mongoose');
+const Blog = require('./models/blog');
+
+// express app
+const app = express();
+
+// register view engine
+app.set('view engine', 'ejs');
+
+const dbURI = 'mongodb+srv://admin:admin123@cluster0.ujjnbjl.mongodb.net/blog-db?retryWrites=true&w=majority';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then((result) => {
+        // listen for requests
+        app.listen(3000);
+        console.log('connected to db');
+    })
+    .catch((err) => console.log(err));
+
+// static files
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
+
+// Routes
+// get home page
+app.get('/', (req, res) => {
+    res.redirect('/blogs');
+});
+
+// get about page
+app.get('/about', (req, res) => {
+    res.render('about', { title: 'About' });
+});
+
+// Blogs routes
+// Get all Blogs
+app.get('/blogs' , (req, res) => {
+    Blog.find({}).sort({ createdAt: -1 })
+        .then((result) => {
+            res.render('index', { title: 'All Blogs', blogs: result });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+// Post a new blog
+app.post('/blogs', (req, res) => {
+    const blog = new Blog(req.body);
+    blog.save()
+        .then((result) => {
+            res.redirect('/blogs');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+// Get a single blog
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findById(id)
+        .then((result) => {
+            res.render('details', { blog: result, title: 'Blog Details' });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+// render create blog page
+app.get('/blogs/create', (req, res) => {
+    res.render('create', { title: 'Create a new blog' });
+});
+
+// 404 page
+app.use((req, res) => {
+    res.status(404).render('404', { title: '404' });
+    // res.sendFile('./views/404.html', { root: __dirname });
+});
 
 ```
 
