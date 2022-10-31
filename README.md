@@ -3138,7 +3138,7 @@ const Blog = require('../models/blog');
 const router = express.Router();
 
 // render create blog page
-router.get('/blogs/create', (req, res) => {
+router.get('/create', (req, res) => {
     res.render('create', { title: 'Create a new blog' });
 });
 
