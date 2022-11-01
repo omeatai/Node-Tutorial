@@ -3344,18 +3344,58 @@ module.exports = {
 </details>
 
 <details>
-  <summary>57. Sample</summary>
+  <summary>57. Add Trash Can for Delete Button</summary>
 
 ```Javascript
-
+<div class="details content">
+    <h2><%= blog.title %></h2>
+    <div class="content">
+        <p><%= blog.body %></p>
+    </div>
+    <a class="delete" data-doc="<%= blog._id %>">
+        <img src="/trashcan.svg" alt="delete icon">
+    </a>
+</div>
 ```
 
-```Javascript
-
-```
+views/details.ejs:
 
 ```Javascript
+<html lang="en">
+<%- include("./partials/head.ejs") %>
 
+<body>
+  <%- include("./partials/nav.ejs") %>
+
+  <div class="details content">
+    <h2><%= blog.title %></h2>
+    <div class="content">
+      <p><%= blog.body %></p>
+    </div>
+    <a class="delete" data-doc="<%= blog._id %>">
+        <img src="/trashcan.svg" alt="delete icon">
+    </a>
+  </div>
+
+  <%- include("./partials/footer.ejs") %>
+
+  <script>
+    const trashcan = document.querySelector('a.delete');
+
+    trashcan.addEventListener('click', (e) => {
+      const endpoint = `/blogs/${trashcan.dataset.doc}`;
+
+      fetch(endpoint, {
+        method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => window.location.href = data.redirect)
+      .catch(err => console.log(err));
+    });
+
+  </script>
+</body>
+</html>
 ```
 
 </details>
