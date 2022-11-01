@@ -3195,7 +3195,7 @@ module.exports = router;
 </details>
 
 <details>
-  <summary>56. MVC Structure</summary>
+  <summary>56. The MVC Structure</summary>
 
 app.js:
 
