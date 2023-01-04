@@ -1,4 +1,5 @@
 # Node-Tutorial
+
 Learn NodeJS by Ifeanyi Omeata
 
 ## Tutorial
@@ -841,19 +842,19 @@ Index.html:
 
 ```html
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Node.js Crash Course</title>
-    </head>
-    <body>
-        <nav>
-            <a href="/"> Homepage </a>
-            <a href="/about"> About page </a>
-        </nav>
-        <h1>Home</h1>
-        <h2>Your path to becoming a Node.js ninja!</h2>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node.js Crash Course</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/"> Homepage </a>
+      <a href="/about"> About page </a>
+    </nav>
+    <h1>Home</h1>
+    <h2>Your path to becoming a Node.js ninja!</h2>
+  </body>
 </html>
 ```
 
@@ -861,19 +862,19 @@ about.html:
 
 ```html
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Node.js Crash Course</title>
-    </head>
-    <body>
-        <nav>
-            <a href="/"> Homepage </a>
-            <a href="/about"> About page </a>
-        </nav>
-        <h1>About</h1>
-        <h2>Your path to becoming a Node.js ninja!</h2>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node.js Crash Course</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/"> Homepage </a>
+      <a href="/about"> About page </a>
+    </nav>
+    <h1>About</h1>
+    <h2>Your path to becoming a Node.js ninja!</h2>
+  </body>
 </html>
 ```
 
@@ -949,14 +950,14 @@ ejs ./template_file.ejs -f data_file.json -o ./output.html
 ```html
 <script src="ejs.js"></script>
 <script>
-  let people = ['geddy', 'neil', 'alex'];
-  let html = ejs.render('<%= people.join(", "); %>', {people: people});
+  let people = ["geddy", "neil", "alex"];
+  let html = ejs.render('<%= people.join(", "); %>', { people: people });
 </script>
 ```
 
 ```html
 <% if (user) { %>
-  <h2><%= user.name %></h2>
+<h2><%= user.name %></h2>
 <% } %>
 ```
 
@@ -982,27 +983,27 @@ Index.ejs:
 
 ```html
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Blog Ninja</title>
-    </head>
-    <body>
-        <nav>
-            <div class= "site-title">
-                <a href="/"><h1>Blog Ninja</h1></a>
-                <p>A Net Ninja Site</p>
-            </div>
-            <ul>
-                <li><a href="/">Blogs</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/blogs/create">New Blog</a></li>
-            </ul>
-        </nav>
-        <div class= "blogs content">
-            <h2>All Blogs</h2>
-        </div>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <title>Blog Ninja</title>
+  </head>
+  <body>
+    <nav>
+      <div class="site-title">
+        <a href="/"><h1>Blog Ninja</h1></a>
+        <p>A Net Ninja Site</p>
+      </div>
+      <ul>
+        <li><a href="/">Blogs</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blogs/create">New Blog</a></li>
+      </ul>
+    </nav>
+    <div class="blogs content">
+      <h2>All Blogs</h2>
+    </div>
+  </body>
 </html>
 ```
 
@@ -1164,36 +1165,36 @@ create.ejs:
 
 ```html
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Blog Ninja</title>
-    </head>
-    <body>
-        <nav>
-            <div class= "site-title">
-                <a href="/"><h1>Blog Ninja</h1></a>
-                <p>A Net Ninja Site</p>
-            </div>
-            <ul>
-                <li><a href="/">Blogs</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/blogs/create">New Blog</a></li>
-            </ul>
-        </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <title>Blog Ninja</title>
+  </head>
+  <body>
+    <nav>
+      <div class="site-title">
+        <a href="/"><h1>Blog Ninja</h1></a>
+        <p>A Net Ninja Site</p>
+      </div>
+      <ul>
+        <li><a href="/">Blogs</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blogs/create">New Blog</a></li>
+      </ul>
+    </nav>
 
-        <div class= "create-blog content">
-            <form>
-                <label for="title">Blog Title:</label>
-                <input type="text" id="title" name="title" required>
-                <label for="snippet">Blog Snippet:</label>
-                <input type="text" id="snippet" name="snippet" required>
-                <label for="body">Blog Body:</label>
-                <textarea id="body" name="body" required></textarea>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </body>
+    <div class="create-blog content">
+      <form>
+        <label for="title">Blog Title:</label>
+        <input type="text" id="title" name="title" required />
+        <label for="snippet">Blog Snippet:</label>
+        <input type="text" id="snippet" name="snippet" required />
+        <label for="body">Blog Body:</label>
+        <textarea id="body" name="body" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
 </html>
 ```
 
@@ -1203,11 +1204,11 @@ create.ejs:
   <summary>35. Displaying Internal Dynamic content</summary>
 
 ```html
-<div class= "site-title">
-    <a href="/"><h1>Blog Ninja</h1></a>
-    <p>A Net Ninja Site</p>
-    <% const firstName = 'Fred' %>
-    <p>His First Name is <%= firstName %>.</p>
+<div class="site-title">
+  <a href="/"><h1>Blog Ninja</h1></a>
+  <p>A Net Ninja Site</p>
+  <% const firstName = 'Fred' %>
+  <p>His First Name is <%= firstName %>.</p>
 </div>
 ```
 
@@ -1248,9 +1249,9 @@ app.use((req, res) => {
 
 ```html
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Ninja | <%= title %> </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Ninja | <%= title %></title>
 </head>
 ```
 
@@ -1308,38 +1309,38 @@ app.use((req, res) => {
 
 ```html
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Blog Ninja | <%= title %> </title>
-    </head>
-    <body>
-        <nav>
-            <div class= "site-title">
-                <a href="/"><h1>Blog Ninja</h1></a>
-                <p>A Net Ninja Site</p>
-            </div>
-            <ul>
-                <li><a href="/">Blogs</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/blogs/create">New Blog</a></li>
-            </ul>
-        </nav>
-        <div class= "blogs content">
-            <h2>All Blogs</h2>
-            <% if(blogs.length > 0){ %>
-                <% blogs.forEach(blog => { %>
-                    <div class="blog-preview">
-                        <h3 class="title"><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h3>
-                        <p class="author">Written by <%= blog.author %></p>
-                        <p class="snippet"><%= blog.snippet %></p>
-                    </div>
-                <% }) %>
-            <%  }else{ %>
-                <p>No blogs to show</p>
-            <% } %>
-        </div>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+    <title>Blog Ninja | <%= title %></title>
+  </head>
+  <body>
+    <nav>
+      <div class="site-title">
+        <a href="/"><h1>Blog Ninja</h1></a>
+        <p>A Net Ninja Site</p>
+      </div>
+      <ul>
+        <li><a href="/">Blogs</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/blogs/create">New Blog</a></li>
+      </ul>
+    </nav>
+    <div class="blogs content">
+      <h2>All Blogs</h2>
+      <% if(blogs.length > 0){ %> <% blogs.forEach(blog => { %>
+      <div class="blog-preview">
+        <h3 class="title">
+          <a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+        </h3>
+        <p class="author">Written by <%= blog.author %></p>
+        <p class="snippet"><%= blog.snippet %></p>
+      </div>
+      <% }) %> <% }else{ %>
+      <p>No blogs to show</p>
+      <% } %>
+    </div>
+  </body>
 </html>
 ```
 
@@ -1352,25 +1353,25 @@ Index.ejs:
 
 ```html
 <html lang="en">
-    <%- include('./partials/head.ejs')  %>
-    <body>
-        <%- include('./partials/nav.ejs')  %>
-        <div class= "blogs content">
-            <h2>All Blogs</h2>
-            <% if(blogs.length > 0){ %>
-                <% blogs.forEach(blog => { %>
-                    <div class="blog-preview">
-                        <h3 class="title"><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h3>
-                        <p class="author">Written by <%= blog.author %></p>
-                        <p class="snippet"><%= blog.snippet %></p>
-                    </div>
-                <% }) %>
-            <%  }else{ %>
-                <p>No blogs to show</p>
-            <% } %>
-        </div>
-        <%- include('./partials/footer.ejs')  %>
-    </body>
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="blogs content">
+      <h2>All Blogs</h2>
+      <% if(blogs.length > 0){ %> <% blogs.forEach(blog => { %>
+      <div class="blog-preview">
+        <h3 class="title">
+          <a href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+        </h3>
+        <p class="author">Written by <%= blog.author %></p>
+        <p class="snippet"><%= blog.snippet %></p>
+      </div>
+      <% }) %> <% }else{ %>
+      <p>No blogs to show</p>
+      <% } %>
+    </div>
+    <%- include('./partials/footer.ejs') %>
+  </body>
 </html>
 ```
 
@@ -1378,15 +1379,15 @@ Nav.ejs:
 
 ```html
 <nav>
-    <div class= "site-title">
-        <a href="/"><h1>Blog Ninja</h1></a>
-        <p>A Net Ninja Site</p>
-    </div>
-    <ul>
-        <li><a href="/">Blogs</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/blogs/create">New Blog</a></li>
-    </ul>
+  <div class="site-title">
+    <a href="/"><h1>Blog Ninja</h1></a>
+    <p>A Net Ninja Site</p>
+  </div>
+  <ul>
+    <li><a href="/">Blogs</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/blogs/create">New Blog</a></li>
+  </ul>
 </nav>
 ```
 
@@ -1394,18 +1395,16 @@ Head.ejs:
 
 ```html
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <title>Blog Ninja | <%= title %> </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width-device-width, initial-scale=1.0" />
+  <title>Blog Ninja | <%= title %></title>
 </head>
 ```
 
 Footer.ejs:
 
 ```html
-<footer>
-    Copyright &copy; 2022
-</footer>
+<footer>Copyright &copy; 2022</footer>
 ```
 
 </details>
@@ -1415,19 +1414,24 @@ Footer.ejs:
 
 ```html
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog Ninja | <%= title %></title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
-    body{
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap");
+    body {
       max-width: 1200px;
       margin: 20px auto;
       padding: 0 20px;
-      font-family: 'Noto Serif', serif;
+      font-family: "Noto Serif", serif;
       max-width: 1200px;
     }
-    p, h1, h2, h3, a, ul{
+    p,
+    h1,
+    h2,
+    h3,
+    a,
+    ul {
       margin: 0;
       padding: 0;
       text-decoration: none;
@@ -1435,7 +1439,7 @@ Footer.ejs:
     }
 
     /* nav & footer styles */
-    nav{
+    nav {
       display: flex;
       justify-content: space-between;
       margin-bottom: 60px;
@@ -1443,35 +1447,36 @@ Footer.ejs:
       border-bottom: 1px solid #ddd;
       text-transform: uppercase;
     }
-    nav ul{
+    nav ul {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
     }
-    nav li{
+    nav li {
       list-style-type: none;
       margin-left: 20px;
     }
-    nav h1{
+    nav h1 {
       font-size: 3em;
     }
-    nav p, nav a{
+    nav p,
+    nav a {
       color: #777;
       font-weight: 300;
     }
-    footer{
+    footer {
       color: #777;
       text-align: center;
       margin: 80px auto 20px;
     }
-    h2{
+    h2 {
       margin-bottom: 40px;
     }
-    h3{
+    h3 {
       text-transform: capitalize;
       margin-bottom: 8px;
     }
-    .content{
+    .content {
       margin-left: 20px;
     }
 
@@ -1480,25 +1485,25 @@ Footer.ejs:
     /* details styles */
 
     /* create styles */
-    .create-blog form{
+    .create-blog form {
       max-width: 400px;
       margin: 0 auto;
     }
     .create-blog input,
-    .create-blog textarea{
+    .create-blog textarea {
       display: block;
       width: 100%;
       margin: 10px 0;
       padding: 8px;
     }
-    .create-blog label{
+    .create-blog label {
       display: block;
       margin-top: 24px;
     }
-    textarea{
+    textarea {
       height: 120px;
     }
-    .create-blog button{
+    .create-blog button {
       margin-top: 20px;
       background: crimson;
       color: white;
@@ -1531,9 +1536,9 @@ app.use((req, res, next) => {
 
 ```markdown
 new request made:
-host:  localhost
-path:  /
-method:  GET
+host: localhost
+path: /
+method: GET
 ```
 
 ```Javascript
@@ -1664,9 +1669,9 @@ app.use((req, res) => {
 
 ```markdown
 new request made:
-host:  localhost
-path:  /
-method:  GET
+host: localhost
+path: /
+method: GET
 GET / 304 19.124 ms - -
 ```
 
@@ -1748,10 +1753,10 @@ head.ejs:
 
 ```html
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog Ninja | <%= title %></title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 ```
 
@@ -2604,27 +2609,25 @@ index.ejs:
 
 ```html
 <html lang="en">
-    <%- include('./partials/head.ejs')  %>
-    <body>
-        <%- include('./partials/nav.ejs')  %>
-        <div class= "blogs content">
-            <h2>All Blogs</h2>
-            <% if(blogs.length > 0){ %>
-                <% blogs.forEach(blog => { %>
-                    <div class="blog-preview">
-                        <a class="single" href="/blogs/<%= blog._id %>">
-                            <h3 class="title"><%= blog.title %></h3>
-                            <p class="author">Written by <%= blog.author %></p>
-                            <p class="snippet"><%= blog.snippet %></p>
-                        </a>
-                    </div>
-                <% }) %>
-            <%  }else{ %>
-                <p>No blogs to show</p>
-            <% } %>
-        </div>
-        <%- include('./partials/footer.ejs')  %>
-    </body>
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="blogs content">
+      <h2>All Blogs</h2>
+      <% if(blogs.length > 0){ %> <% blogs.forEach(blog => { %>
+      <div class="blog-preview">
+        <a class="single" href="/blogs/<%= blog._id %>">
+          <h3 class="title"><%= blog.title %></h3>
+          <p class="author">Written by <%= blog.author %></p>
+          <p class="snippet"><%= blog.snippet %></p>
+        </a>
+      </div>
+      <% }) %> <% }else{ %>
+      <p>No blogs to show</p>
+      <% } %>
+    </div>
+    <%- include('./partials/footer.ejs') %>
+  </body>
 </html>
 ```
 
@@ -2632,22 +2635,21 @@ details.ejs:
 
 ```html
 <html lang="en">
-<%- include("./partials/head.ejs") %>
+  <%- include("./partials/head.ejs") %>
 
-<body>
-  <%- include("./partials/nav.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
 
-  <div class="details content">
-    <h2><%= blog.title %></h2>
-    <div class="content">
-      <p><%= blog.body %></p>
+    <div class="details content">
+      <h2><%= blog.title %></h2>
+      <div class="content">
+        <p><%= blog.body %></p>
+      </div>
+      <a class="delete" data-doc="<%= blog._id %>">delete</a>
     </div>
-    <a class="delete" data-doc="<%= blog._id %>">delete</a>
-  </div>
 
-  <%- include("./partials/footer.ejs") %>
-
-</body>
+    <%- include("./partials/footer.ejs") %>
+  </body>
 </html>
 ```
 
@@ -2655,15 +2657,15 @@ style.css:
 
 ```css
 /* index styles */
-      .blogs a{
-        display: block;
-        margin: 40px 0;
-        padding-left: 30px;
-        border-left: 6px solid crimson;
-      }
-      .blogs a:hover h3{
-        color: crimson;
-      }
+.blogs a {
+  display: block;
+  margin: 40px 0;
+  padding-left: 30px;
+  border-left: 6px solid crimson;
+}
+.blogs a:hover h3 {
+  color: crimson;
+}
 ```
 
 ```Javascript
@@ -2778,59 +2780,57 @@ details.ejs:
 
 ```html
 <html lang="en">
-<%- include("./partials/head.ejs") %>
+  <%- include("./partials/head.ejs") %>
 
-<body>
-  <%- include("./partials/nav.ejs") %>
+  <body>
+    <%- include("./partials/nav.ejs") %>
 
-  <div class="details content">
-    <h2><%= blog.title %></h2>
-    <div class="content">
-      <p><%= blog.body %></p>
+    <div class="details content">
+      <h2><%= blog.title %></h2>
+      <div class="content">
+        <p><%= blog.body %></p>
+      </div>
+      <a class="delete" data-doc="<%= blog._id %>">delete</a>
     </div>
-    <a class="delete" data-doc="<%= blog._id %>">delete</a>
-  </div>
 
-  <%- include("./partials/footer.ejs") %>
+    <%- include("./partials/footer.ejs") %>
 
-  <script>
-    const trashcan = document.querySelector('a.delete');
+    <script>
+      const trashcan = document.querySelector("a.delete");
 
-    trashcan.addEventListener('click', (e) => {
-      const endpoint = `/blogs/${trashcan.dataset.doc}`;
+      trashcan.addEventListener("click", (e) => {
+        const endpoint = `/blogs/${trashcan.dataset.doc}`;
 
-      fetch(endpoint, {
-        method: 'DELETE',
-      })
-      .then(response => response.json())
-      .then(data => window.location.href = data.redirect)
-      .catch(err => console.log(err));
-    });
-
-  </script>
-</body>
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => (window.location.href = data.redirect))
+          .catch((err) => console.log(err));
+      });
+    </script>
+  </body>
 </html>
 ```
 
 style.css:
 
 ```css
- /* details styles */
-    .details{
-      position: relative;
-    }
-    .delete{
-      position: absolute;
-      top: 0;
-      right: 0;
-      border-radius: 50%;
-      padding: 8px;
-    }
-    .delete:hover{
-      cursor: pointer;
-      box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
-    }
-
+/* details styles */
+.details {
+  position: relative;
+}
+.delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  padding: 8px;
+}
+.delete:hover {
+  cursor: pointer;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+}
 ```
 
 ```Javascript
@@ -3488,20 +3488,30 @@ module.exports = {
 
 </details>
 
-### [2-NODE CRASH COURSE 2 - NET NINJA](#)
+### [2-MERN STACK TUTORIAL - DAVE GRAY](#)
+
++INTRODUCTION
 
 <details>
-  <summary>59. Sample</summary>
+  <summary>59. Intro</summary>
 
-```Javascript
-
-```
-
-```Javascript
+```bs
 
 ```
 
-```Javascript
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
 
 ```
 
@@ -3510,37 +3520,273 @@ module.exports = {
 <details>
   <summary>60. Sample</summary>
 
-```Javascript
+```bs
 
 ```
 
-```Javascript
+```js
 
 ```
 
-```Javascript
+```js
+
+```
+
+```js
+
+```
+
+```js
 
 ```
 
 </details>
 
-
 <details>
   <summary>61. Sample</summary>
 
-```Javascript
+```bs
 
 ```
 
-```Javascript
+```js
 
 ```
 
-```Javascript
+```js
 
 ```
 
-```Javascript
+```js
+
+```
+
+```js
+
+```
+
+</details>
+
+<details>
+  <summary>62. Sample</summary>
+
+```bs
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+</details>
+
+<details>
+  <summary>63. Sample</summary>
+
+```bs
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+</details>
+
+<details>
+  <summary>64. Sample</summary>
+
+```bs
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+</details>
+
+<details>
+  <summary>65. Sample</summary>
+
+```bs
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+</details>
+
+<details>
+  <summary>66. Sample</summary>
+
+```bs
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+</details>
+
+<details>
+  <summary>67. Sample</summary>
+
+```bs
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+</details>
+
+<details>
+  <summary>68. Sample</summary>
+
+```bs
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+</details>
+
+<details>
+  <summary>69. Sample</summary>
+
+```bs
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+</details>
+
+<details>
+  <summary>70. Sample</summary>
+
+```bs
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
 
 ```
 
