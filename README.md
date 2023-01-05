@@ -4146,7 +4146,7 @@ node stream
 </details>
 
 <details>
-  <summary>72. Piping read streams to write files </summary>
+  <summary>72. Piping Read streams to Write files </summary>
 
 stream.js:
 
