@@ -3799,7 +3799,7 @@ node index
 </details>
 
 <details>
-  <summary>66. Sample</summary>
+  <summary>66. Update File - fs.appendFile()</summary>
 
 ```bs
 
