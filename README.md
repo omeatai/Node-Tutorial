@@ -3764,26 +3764,36 @@ node index
 </details>
 
 <details>
-  <summary>65. Sample</summary>
+  <summary>65. Write File - fs.writeFile()</summary>
+
+index.js:
+
+```js
+const fs = require("fs");
+const path = require("path");
+
+fs.writeFile(
+  path.join(__dirname, "files", "reply.txt"),
+  "Nice to meet you!",
+  (err) => {
+    if (err) throw err;
+    console.log("Write Complete.");
+  }
+);
+
+// exit on uncaught errors
+process.on("uncaughtException", (err) => {
+  console.error(`There was an uncaught error: ${err}`);
+  process.exit(1);
+});
+```
 
 ```bs
-
+node index
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+// Write Complete.
 ```
 
 </details>
