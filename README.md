@@ -4079,26 +4079,68 @@ Nice to meet you.
 </details>
 
 <details>
-  <summary>71. Readstream for large files</summary>
+  <summary>71. Read and Write streams for large files</summary>
+
+stream.js:
+
+```js
+const fs = require("fs");
+const path = require("path");
+
+const rs = fs.createReadStream(path.join(__dirname, "files", "lorem.txt"), {
+  encoding: "utf8",
+});
+const ws = fs.createWriteStream(path.join(__dirname, "files", "new-lorem.txt"));
+let count = 0;
+
+rs.on("data", (dataChunk) => {
+  try {
+    ws.write(dataChunk);
+    count += 1;
+    //   console.log(dataChunk);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    console.log(`Completed Chunk: ${count}`);
+  }
+});
+```
 
 ```bs
-
+node stream
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+// Completed Chunk: 1
+// Completed Chunk: 2
+// Completed Chunk: 3
+// Completed Chunk: 4
+// Completed Chunk: 5
+// Completed Chunk: 6
+// Completed Chunk: 7
+// Completed Chunk: 8
+// Completed Chunk: 9
+// Completed Chunk: 10
+// Completed Chunk: 11
+// Completed Chunk: 12
+// Completed Chunk: 13
+// Completed Chunk: 14
+// Completed Chunk: 15
+// Completed Chunk: 16
+// Completed Chunk: 17
+// Completed Chunk: 18
+// Completed Chunk: 19
+// Completed Chunk: 20
+// Completed Chunk: 21
+// Completed Chunk: 22
+// Completed Chunk: 23
+// Completed Chunk: 24
+// Completed Chunk: 25
+// Completed Chunk: 26
+// Completed Chunk: 27
+// Completed Chunk: 28
+// Completed Chunk: 29
+// Completed Chunk: 30
 ```
 
 </details>
