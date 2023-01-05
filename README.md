@@ -3557,9 +3557,9 @@ console.log(__filename);
 console.log(os.type());
 console.log(os.version());
 console.log(os.homedir());
+
 console.log(os.hostname());
 console.log(os.platform());
-
 console.log(os.userInfo());
 console.log(os.release());
 console.log(os.uptime());
@@ -3584,8 +3584,6 @@ node server
 Darwin
 Darwin Kernel Version 21.4.0
 /Users/ifeanyiomeata
-Ifeanyis-MacBook-Air.local
-darwin
 -------------------->
 ```
 
