@@ -3590,18 +3590,33 @@ Darwin Kernel Version 21.4.0
 </details>
 
 <details>
-  <summary>61. Sample</summary>
+  <summary>61. The Path Object</summary>
+
+server.js
+
+```js
+const os = require("os");
+const path = require("path");
+
+console.log(__dirname);
+console.log(__filename);
+
+console.log(path.dirname(__filename));
+console.log(path.basename(__filename));
+console.log(path.extname(__filename));
+```
 
 ```bs
-
+node server
 ```
 
-```js
+```bs
+/Users/ifeanyiomeata/Desktop/SERVER/Cloud-React-Node/node-project
+/Users/ifeanyiomeata/Desktop/SERVER/Cloud-React-Node/node-project/server.js
 
-```
-
-```js
-
+/Users/ifeanyiomeata/Desktop/SERVER/Cloud-React-Node/node-project
+server.js
+.js
 ```
 
 ```js
