@@ -4221,26 +4221,27 @@ if (!fs.existsSync("./newdir")) {
 </details>
 
 <details>
-  <summary>75. Sample</summary>
+  <summary>75. Delete Folder Directory</summary>
+
+index.js:
+
+```js
+const fs = require("fs");
+
+if (fs.existsSync("./newdir")) {
+  fs.rmdir("./newdir", (err) => {
+    if (err) throw err;
+    console.log("Directory deleted successfully");
+  });
+}
+```
 
 ```bs
-
+node index
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+// Directory deleted successfully
 ```
 
 </details>
