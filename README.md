@@ -3722,7 +3722,7 @@ node index
 </details>
 
 <details>
-  <summary>64. Read File with Path - fs.readFile()</summary>
+  <summary>64. Read File with Path Module - fs.readFile()</summary>
 
 files/starter.txt:
 
