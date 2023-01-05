@@ -3722,26 +3722,43 @@ node index
 </details>
 
 <details>
-  <summary>64. Sample</summary>
+  <summary>64. Read File with Path - fs.readFile()</summary>
+
+files/starter.txt:
+
+```txt
+Hello, my name is Ifeanyi.
+```
+
+index.js:
+
+```js
+const fs = require("fs");
+const path = require("path");
+
+fs.readFile(
+  path.join(__dirname, "files", "starter.txt"),
+  "utf8",
+  (err, data) => {
+    if (err) throw err;
+    console.log(data);
+    //console.log(data.toString());
+  }
+);
+
+// exit on uncaught errors
+process.on("uncaughtException", (err) => {
+  console.error(`There was an uncaught error: ${err}`);
+  process.exit(1);
+});
+```
 
 ```bs
-
+node index
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+// Hello, my name is Ifeanyi.
 ```
 
 </details>
