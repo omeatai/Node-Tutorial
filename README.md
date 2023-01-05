@@ -3889,26 +3889,67 @@ You really have a great car!
 </details>
 
 <details>
-  <summary>68. Sample</summary>
+  <summary>68. Write + Update + Rename File Sync order</summary>
+
+index.js:
+
+```js
+const fs = require("fs");
+const path = require("path");
+
+//Write File
+fs.writeFile(
+  path.join(__dirname, "files", "reply.txt"),
+  "Nice to meet you Bob!",
+  (err) => {
+    if (err) throw err;
+    console.log("Write Complete.");
+
+    //Append to File
+    fs.appendFile(
+      path.join(__dirname, "files", "reply.txt"),
+      "\n\nYou really have a great car!",
+      (err) => {
+        if (err) throw err;
+        console.log("Append Complete.");
+
+        //Rename File
+        fs.rename(
+          path.join(__dirname, "files", "reply.txt"),
+          path.join(__dirname, "files", "newReply.txt"),
+          (err) => {
+            if (err) throw err;
+            console.log("Rename Complete.");
+          }
+        );
+      }
+    );
+  }
+);
+
+// exit on uncaught errors
+process.on("uncaughtException", (err) => {
+  console.error(`There was an uncaught error: ${err}`);
+  process.exit(1);
+});
+```
 
 ```bs
-
+node index
 ```
 
 ```js
-
+// Write Complete.
+// Append Complete.
+// Rename Complete.
 ```
 
-```js
+files/newReply.txt:
 
-```
+```txt
+Nice to meet you Bob!
 
-```js
-
-```
-
-```js
-
+You really have a great car!
 ```
 
 </details>
