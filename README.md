@@ -3834,26 +3834,56 @@ node index
 </details>
 
 <details>
-  <summary>67. Sample</summary>
+  <summary>67. Write + Append File Sync order</summary>
+
+index.js:
+
+```js
+const fs = require("fs");
+const path = require("path");
+
+//Write File
+fs.writeFile(
+  path.join(__dirname, "files", "reply.txt"),
+  "Nice to meet you Bob!",
+  (err) => {
+    if (err) throw err;
+    console.log("Write Complete.");
+
+    //Append to File
+    fs.appendFile(
+      path.join(__dirname, "files", "reply.txt"),
+      "\n\nYou really have a great car!",
+      (err) => {
+        if (err) throw err;
+        console.log("Append Complete.");
+      }
+    );
+  }
+);
+
+// exit on uncaught errors
+process.on("uncaughtException", (err) => {
+  console.error(`There was an uncaught error: ${err}`);
+  process.exit(1);
+});
+```
 
 ```bs
-
+node index
 ```
 
 ```js
-
+// Write Complete.
+// Append Complete.
 ```
 
-```js
+files/reply.txt:
 
-```
+```txt
+Nice to meet you Bob!
 
-```js
-
-```
-
-```js
-
+You really have a great car!
 ```
 
 </details>
