@@ -4179,26 +4179,25 @@ node stream
 </details>
 
 <details>
-  <summary>73. Sample</summary>
+  <summary>73. Create Folder Directory</summary>
+
+index.js:
+
+```js
+const fs = require("fs");
+
+fs.mkdir("./newdir", (err) => {
+  if (err) throw err;
+  console.log("Directory created");
+});
+```
 
 ```bs
-
+node index
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+// Directory created
 ```
 
 </details>
