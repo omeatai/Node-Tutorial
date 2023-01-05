@@ -3685,7 +3685,7 @@ node server
 </details>
 
 <details>
-  <summary>63. Sample</summary>
+  <summary>63. Read File - fs.readFile()</summary>
 
 ```bs
 
