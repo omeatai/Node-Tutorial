@@ -4382,6 +4382,8 @@ Install UUID:
 
 ```bs
 npm i uuid
+npm i uuid@8.3.2
+npm i uuid@latest
 ```
 
 ```js
