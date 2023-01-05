@@ -3834,7 +3834,7 @@ node index
 </details>
 
 <details>
-  <summary>67. Write + Append File Sync order</summary>
+  <summary>67. Write + Update File Sync order</summary>
 
 index.js:
 
