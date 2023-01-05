@@ -4079,7 +4079,7 @@ Nice to meet you.
 </details>
 
 <details>
-  <summary>71. Read and Write streams for large files</summary>
+  <summary>71. Read and Write streams for large files with DataChunks</summary>
 
 stream.js:
 
