@@ -4252,16 +4252,50 @@ node index
 Install Nodemon:
 
 ```bs
-<!-- production  -->
+<!-- Global Dependency  -->
 npm install -g nodemon
 
-<!-- development -->
+<!-- Production  -->
+npm install --save nodemon
+npm install -S nodemon
+
+<!-- Development -->
 npm install --save-dev nodemon
+npm install -D nodemon
+```
+
+Set Scripts-
+
+package.json:
+
+```json
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "date-fns": "^2.29.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
 ```
 
 Start Nodemon Server:
 
 ```bs
+npm run dev
+OR
 nodemon server.js
 ```
 
@@ -4301,7 +4335,10 @@ Install date-fns:
 
 ```bs
 npm install date-fns --save
+npm install date-fns --S
 ```
+
+Example:
 
 ```js
 import { compareAsc, format } from "date-fns";
@@ -4322,16 +4359,16 @@ dates.sort(compareAsc);
 // ]
 ```
 
-```js
+server.js:
 
+```js
+const { format } = require("date-fns");
+
+console.log(format(new Date(), "yyyyMMdd\tHH:mm:ss"));
 ```
 
 ```js
-
-```
-
-```js
-
+// 20230105        15:11:20
 ```
 
 </details>
