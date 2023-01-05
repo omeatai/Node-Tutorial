@@ -4247,39 +4247,79 @@ node index
 </details>
 
 <details>
-  <summary>76. Sample</summary>
+  <summary>76. NPM Nodemon</summary>
+
+Install Nodemon:
 
 ```bs
+<!-- production  -->
+npm install -g nodemon
 
+<!-- development -->
+npm install --save-dev nodemon
+```
+
+Start Nodemon Server:
+
+```bs
+nodemon server.js
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+// [nodemon] 2.0.20
+// [nodemon] to restart at any time, enter `rs`
+// [nodemon] watching path(s): *.*
+// [nodemon] watching extensions: js,mjs,json
+// [nodemon] starting `node server.js`
+// 5
+// 1
+// 6
+// 1.5
+// [nodemon] clean exit - waiting for changes before restart
 ```
 
 </details>
 
 <details>
-  <summary>77. Sample</summary>
+  <summary>77. NPM Date-fns</summary>
+
+NPM Initialization:
 
 ```bs
+npm init -y
+```
 
+Setup .gitignore -
+
+.gitignore:
+
+```bs
+node_modules
+```
+
+Install date-fns:
+
+```bs
+npm install date-fns --save
 ```
 
 ```js
+import { compareAsc, format } from "date-fns";
 
+format(new Date(2014, 1, 11), "yyyy-MM-dd");
+//=> '2014-02-11'
+
+const dates = [
+  new Date(1995, 6, 2),
+  new Date(1987, 1, 11),
+  new Date(1989, 6, 10),
+];
+dates.sort(compareAsc);
+//=> [
+//   Wed Feb 11 1987 00:00:00,
+//   Mon Jul 10 1989 00:00:00,
+//   Sun Jul 02 1995 00:00:00
+// ]
 ```
 
 ```js
