@@ -4416,26 +4416,12 @@ nodemon server.js
 </details>
 
 <details>
-  <summary>79. Sample</summary>
+  <summary>79. Uninstalling NPM Packages</summary>
 
 ```bs
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+npm uninstall nodemon -D
+npm uninstall uuid
+npm rm uuid
 ```
 
 </details>
