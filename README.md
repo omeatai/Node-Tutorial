@@ -3592,7 +3592,7 @@ Darwin Kernel Version 21.4.0
 <details>
   <summary>61. The Path Object</summary>
 
-server.js
+server.js:
 
 ```js
 const os = require("os");
@@ -3630,26 +3630,46 @@ server.js
 </details>
 
 <details>
-  <summary>62. Sample</summary>
+  <summary>62. Create Object Modules</summary>
+
+math.js:
+
+```js
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => a / b;
+
+module.exports = { add, subtract, multiply, divide };
+
+// exports.add = (a, b) => a + b;
+// exports.subtract = (a, b) => a - b;
+// exports.multiply = (a, b) => a * b;
+// exports.divide = (a, b) => a / b;
+```
+
+server.js:
+
+```js
+const os = require("os");
+const path = require("path");
+const { add, subtract, multiply, divide } = require("./math");
+
+console.log(add(3, 2));
+console.log(subtract(3, 2));
+console.log(multiply(3, 2));
+console.log(divide(3, 2));
+```
 
 ```bs
-
+node server
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+// 5
+// 1
+// 6
+// 1.5
 ```
 
 </details>
