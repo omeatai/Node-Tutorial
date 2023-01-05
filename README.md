@@ -3544,26 +3544,48 @@ node server
 </details>
 
 <details>
-  <summary>60. Sample</summary>
+  <summary>60. The OS Object</summary>
+
+server.js:
+
+```js
+const os = require("os");
+
+console.log(__dirname);
+console.log(__filename);
+
+console.log(os.type());
+console.log(os.version());
+console.log(os.homedir());
+console.log(os.hostname());
+console.log(os.platform());
+console.log(os.userInfo());
+console.log(os.release());
+console.log(os.uptime());
+console.log(os.arch());
+console.log(os.cpus());
+console.log(os.endianness());
+console.log(os.freemem());
+console.log(os.getPriority());
+console.log(os.loadavg());
+console.log(os.networkInterfaces());
+console.log(os.totalmem());
+```
 
 ```bs
-
+node server
 ```
 
-```js
+```bs
+/Users/ifeanyiomeata/Desktop/SERVER/Cloud-React-Node/node-project
+/Users/ifeanyiomeata/Desktop/SERVER/Cloud-React-Node/node-project/server.js
 
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+Darwin
+Darwin Kernel Version 21.4.0: Mon Feb 21 20:36:53 PST 2022; root:xnu-8020.101.4~2/RELEASE_ARM64_T8101
+/Users/ifeanyiomeata
+Ifeanyis-MacBook-Air.local
+darwin
+-------------------->
 ```
 
 </details>
