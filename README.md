@@ -3488,31 +3488,57 @@ module.exports = {
 
 </details>
 
-### [2-MERN STACK TUTORIAL - DAVE GRAY](#)
+### [2-NODE.JS TUTORIAL - DAVE GRAY](#)
 
 +INTRODUCTION
 
 <details>
-  <summary>59. Intro</summary>
+  <summary>59. The Global Object</summary>
+
+server.js:
+
+```js
+console.log("Hello world!");
+
+console.log(global);
+```
 
 ```bs
-
+node server
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+// Hello world!
+// <ref *1> Object [global] {
+//   global: [Circular *1],
+//   clearInterval: [Function: clearInterval],
+//   clearTimeout: [Function: clearTimeout],
+//   setInterval: [Function: setInterval],
+//   setTimeout: [Function: setTimeout] {
+//     [Symbol(nodejs.util.promisify.custom)]: [Getter]
+//   },
+//   queueMicrotask: [Function: queueMicrotask],
+//   performance: Performance {
+//     nodeTiming: PerformanceNodeTiming {
+//       name: 'node',
+//       entryType: 'node',
+//       startTime: 0,
+//       duration: 115.58020782470703,
+//       nodeStart: 26.828166007995605,
+//       v8Start: 44.619500160217285,
+//       bootstrapComplete: 102.09924983978271,
+//       environment: 61.474082946777344,
+//       loopStart: -1,
+//       loopExit: -1,
+//       idleTime: 0
+//     },
+//     timeOrigin: 1672901956430.907
+//   },
+//   clearImmediate: [Function: clearImmediate],
+//   setImmediate: [Function: setImmediate] {
+//     [Symbol(nodejs.util.promisify.custom)]: [Getter]
+//   }
+// }
 ```
 
 </details>
