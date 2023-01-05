@@ -3955,26 +3955,41 @@ You really have a great car!
 </details>
 
 <details>
-  <summary>69. Sample</summary>
+  <summary>69. Read File with Promises</summary>
+
+starter.txt:
+
+```txt
+Hello, my name is Ifeanyi.
+```
+
+index.js:
+
+```js
+const fsPromises = require("fs").promises;
+const path = require("path");
+
+const fileOps = async () => {
+  try {
+    const data = await fsPromises.readFile(
+      path.join(__dirname, "files", "starter.txt"),
+      "utf8"
+    );
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+fileOps();
+```
 
 ```bs
-
+node index
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+// Hello, my name is Ifeanyi.
 ```
 
 </details>
