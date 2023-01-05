@@ -3492,6 +3492,14 @@ module.exports = {
 
 +INTRODUCTION
 
+```bs
+nvm install <version>
+nvm use <version>
+nvm ls
+
+node -v
+```
+
 <details>
   <summary>59. The Global Object</summary>
 
