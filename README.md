@@ -3581,7 +3581,7 @@ node server
 /Users/ifeanyiomeata/Desktop/SERVER/Cloud-React-Node/node-project/server.js
 
 Darwin
-Darwin Kernel Version 21.4.0: Mon Feb 21 20:36:53 PST 2022; root:xnu-8020.101.4~2/RELEASE_ARM64_T8101
+Darwin Kernel Version 21.4.0
 /Users/ifeanyiomeata
 Ifeanyis-MacBook-Air.local
 darwin
