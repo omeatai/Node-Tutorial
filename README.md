@@ -3492,6 +3492,11 @@ module.exports = {
 
 +INTRODUCTION
 
+<details>
+  <summary>59. The Global Object</summary>
+
+Check Node Version:
+
 ```bs
 nvm install <version>
 nvm use <version>
@@ -3499,9 +3504,6 @@ nvm ls
 
 node -v
 ```
-
-<details>
-  <summary>59. The Global Object</summary>
 
 server.js:
 
