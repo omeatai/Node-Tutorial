@@ -3995,26 +3995,85 @@ node index
 </details>
 
 <details>
-  <summary>70. Sample</summary>
+  <summary>70. Read + Delete + Write + Update + Rename File with Promises</summary>
+
+starter.txt:
+
+```txt
+Hello, my name is Ifeanyi.
+```
+
+index.js:
+
+```js
+const fsPromises = require("fs").promises;
+const path = require("path");
+
+const fileOps = async () => {
+  try {
+    //Read File
+    const data = await fsPromises.readFile(
+      path.join(__dirname, "files", "starter.txt"),
+      "utf8"
+    );
+    console.log("#### OLD ####");
+    console.log(data);
+
+    //Delete old File
+    await fsPromises.unlink(path.join(__dirname, "files", "starter.txt"));
+
+    //Write new File
+    await fsPromises.writeFile(
+      path.join(__dirname, "files", "promiseWrite.txt"),
+      data
+    );
+
+    //Update new File
+    await fsPromises.appendFile(
+      path.join(__dirname, "files", "promiseWrite.txt"),
+      "\n\nNice to meet you."
+    );
+
+    //Rename new File
+    await fsPromises.rename(
+      path.join(__dirname, "files", "promiseWrite.txt"),
+      path.join(__dirname, "files", "promiseComplete.txt")
+    );
+
+    //Read the new File
+    const newData = await fsPromises.readFile(
+      path.join(__dirname, "files", "promiseComplete.txt"),
+      "utf8"
+    );
+    console.log("#### NEW ####");
+    console.log(newData);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+fileOps();
+```
 
 ```bs
-
+node index
 ```
 
 ```js
-
+// #### OLD ####
+// Hello, my name is Ifeanyi.
+// #### NEW ####
+// Hello, my name is Ifeanyi.
+//
+// Nice to meet you.
 ```
 
-```js
+files/promiseComplete.txt:
 
-```
+```txt
+Hello, my name is Ifeanyi.
 
-```js
-
-```
-
-```js
-
+Nice to meet you.
 ```
 
 </details>
