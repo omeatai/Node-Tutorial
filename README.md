@@ -4146,26 +4146,34 @@ node stream
 </details>
 
 <details>
-  <summary>72. Sample</summary>
+  <summary>72. Piping read streams to write files </summary>
+
+stream.js:
+
+```js
+const fs = require("fs");
+const path = require("path");
+
+const rs = fs.createReadStream(path.join(__dirname, "files", "lorem.txt"), {
+  encoding: "utf8",
+});
+const ws = fs.createWriteStream(path.join(__dirname, "files", "new-lorem.txt"));
+
+try {
+  rs.pipe(ws);
+} catch (err) {
+  console.error(err);
+} finally {
+  console.log(`Completed Streaming.`);
+}
+```
 
 ```bs
-
+node stream
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+// Completed Streaming.
 ```
 
 </details>
