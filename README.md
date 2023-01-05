@@ -4427,26 +4427,72 @@ npm rm uuid
 </details>
 
 <details>
-  <summary>80. Sample</summary>
+  <summary>80. Creating Node Log Events</summary>
+
+server.js:
+
+```js
+const { format } = require("date-fns");
+const { v4: uuid } = require("uuid");
+
+const fs = require("fs");
+const fsPromises = require("fs").promises;
+const path = require("path");
+
+const logEvents = async (message) => {
+  const dateTime = `${format(new Date(), "yyyyMMdd\tHH:mm:ss")}`;
+  const logItem = `${dateTime}\t${uuid()}\t${message}\n`;
+  console.log(logItem);
+  try {
+    if (!fs.existsSync(path.join(__dirname, "logs"))) {
+      await fsPromises.mkdir(path.join(__dirname, "logs"));
+    }
+    await fsPromises.appendFile(
+      path.join(__dirname, "logs", "eventLog.txt"),
+      logItem
+    );
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+module.exports = logEvents;
+```
+
+index.js:
+
+```js
+const logEvents = require("./server");
+const EventEmitter = require("events");
+
+class MyEmitter extends EventEmitter {}
+
+// initialize object
+const myEmitter = new MyEmitter();
+
+// add listener for the log event
+myEmitter.on("log", (msg) => logEvents(msg));
+
+setTimeout(() => {
+  //Emit event
+  myEmitter.emit("log", "Log event emitted!");
+}, 2000);
+```
 
 ```bs
-
+npm run dev
 ```
 
 ```js
-
+// 20230105        20:25:46        385ed21d-e060-4947-89e6-0bb2bd0e0904    Log event emitted!
 ```
 
-```js
+log/eventLog.txt:
 
-```
-
-```js
-
-```
-
-```js
-
+```txt
+20230105	20:25:02	66da5e18-e0bf-4f20-926e-17f797e9edd4	Log event emitted!
+20230105	20:25:40	ba3759fb-c30e-4b5c-b9a4-2ce824076c00	Log event emitted!
+20230105	20:25:46	385ed21d-e060-4947-89e6-0bb2bd0e0904	Log event emitted!
 ```
 
 </details>
