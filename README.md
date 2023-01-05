@@ -4203,26 +4203,19 @@ node index
 </details>
 
 <details>
-  <summary>74. Sample</summary>
+  <summary>74. Find out if Folder Directory Exists</summary>
 
-```bs
-
-```
+index.js:
 
 ```js
+const fs = require("fs");
 
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+if (!fs.existsSync("./newdir")) {
+  fs.mkdir("./newdir", (err) => {
+    if (err) throw err;
+    console.log("Directory created");
+  });
+}
 ```
 
 </details>
