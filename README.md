@@ -4374,26 +4374,39 @@ console.log(format(new Date(), "yyyyMMdd\tHH:mm:ss"));
 </details>
 
 <details>
-  <summary>78. Sample</summary>
+  <summary>78. NPM UUID</summary>
+
+Install UUID:
 
 ```bs
-
+npm i uuid
 ```
 
 ```js
+import { v4 as uuidv4 } from "uuid";
+uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
 
+const { v4: uuidv4 } = require("uuid");
+uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
+```
+
+server.js:
+
+```js
+const { format } = require("date-fns");
+const { v4: uuid } = require("uuid");
+
+console.log(format(new Date(), "yyyyMMdd\tHH:mm:ss"));
+console.log(uuid());
+```
+
+```bs
+nodemon server.js
 ```
 
 ```js
-
-```
-
-```js
-
-```
-
-```js
-
+// 20230105        20:01:22
+// 36aee871-e2ef-4ce1-a75b-79e461ea685f
 ```
 
 </details>
