@@ -3604,6 +3604,7 @@ console.log(__filename);
 console.log(path.dirname(__filename));
 console.log(path.basename(__filename));
 console.log(path.extname(__filename));
+console.log(path.parse(__filename));
 ```
 
 ```bs
@@ -3617,6 +3618,13 @@ node server
 /Users/ifeanyiomeata/Desktop/SERVER/Cloud-React-Node/node-project
 server.js
 .js
+{
+  root: '/',
+  dir: '/Users/ifeanyiomeata/Desktop/SERVER/Cloud-React-Node/node-project',
+  base: 'server.js',
+  ext: '.js',
+  name: 'server'
+}
 ```
 
 </details>
