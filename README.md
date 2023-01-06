@@ -4856,12 +4856,14 @@ Server running on port 3500
 <details>
   <summary>86. Express - Applying RegEx to routes </summary>
 
-"^/$|/index(.html)?" means: <br>
+"^/$|/index(.html)?" means:
 
-^/ - it must begin with a slash<br>
-/$ - it must end with a slash<br>
-| - or<br>
-/index(.html)? - it must look like /index or /index.html<br>
+```bs
+^/ - it must begin with a slash
+/$ - it must end with a slash
+| - or
+/index(.html)? - it must look like /index or /index.html
+```
 
 server.js:
 
