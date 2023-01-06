@@ -4983,26 +4983,73 @@ Server running on port 3500
 </details>
 
 <details>
-  <summary>89. Sample</summary>
+  <summary>89. Express - Next Route handlers</summary>
 
 ```bs
-
+// Next Route handlers
+app.get(
+  "/hello(.html)?",
+  (req, res, next) => {
+    console.log("loading hello.html...");
+    next();
+  },
+  (req, res) => {
+    res.send("Hello World!");
+  }
+);
 ```
 
-```js
+server.js:
 
+```js
+const express = require("express");
+const app = express();
+const path = require("path");
+const PORT = process.env.PORT || 3500;
+
+app.get("^/$|/index(.html)?", (req, res) => {
+  // res.sendFile("./views/index.html", { root: __dirname });
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
+
+app.get("/new-page(.html)?", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "new-page.html"));
+});
+
+//redirect route
+app.get("/old-page(.html)?", (req, res) => {
+  res.redirect(301, "/new-page.html"); //302 by default
+});
+
+// Next Route handlers
+app.get(
+  "/hello(.html)?",
+  (req, res, next) => {
+    console.log("loading hello.html...");
+    next();
+  },
+  (req, res) => {
+    res.send("Hello World!");
+  }
+);
+
+//Custom 404 Page
+app.get("/*", (req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 ```
 
-```js
-
+```bs
+node run dev
 ```
 
-```js
-
-```
-
-```js
-
+```bs
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 3500
+loading hello.html...
 ```
 
 </details>
