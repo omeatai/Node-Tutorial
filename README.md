@@ -4426,10 +4426,12 @@ npm rm uuid
 
 </details>
 
-<details>
-  <summary>80. Creating Node Log Events</summary>
++NODE-SERVER
 
-server.js:
+<details>
+  <summary>80. Node Server - Creating Node Log Events</summary>
+
+event.js:
 
 ```js
 const { format } = require("date-fns");
@@ -4462,7 +4464,7 @@ module.exports = logEvents;
 index.js:
 
 ```js
-const logEvents = require("./server");
+const logEvents = require("./event");
 const EventEmitter = require("events");
 
 class MyEmitter extends EventEmitter {}
@@ -4498,26 +4500,76 @@ log/eventLog.txt:
 </details>
 
 <details>
-  <summary>81. Sample</summary>
+  <summary>81. Node Server - Initializing Server</summary>
+
+package.json:
+
+```json
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "date-fns": "^2.29.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
+```
+
+server.js:
+
+```js
+const http = require("http");
+const path = require("path");
+const fs = require("fs");
+const fsPromises = require("fs").promises;
+
+const logEvents = require("./logEvents");
+const EventEmitter = require("events");
+class Emitter extends EventEmitter {}
+
+// initialize object
+const myEmitter = new Emitter();
+myEmitter.on("log", (msg, fileName) => logEvents(msg, fileName));
+
+const PORT = process.env.PORT || 3500;
+
+const server = http.createServer((req, res) => {
+  console.log(req.url);
+  console.log(req.method);
+});
+
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+```
 
 ```bs
-
+npm run dev
 ```
 
-```js
+```bs
+> project@1.0.0 dev
+> nodemon server.js
 
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+[nodemon] 2.0.20
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server.js`
+Server running on port 3500
+/
+GET
 ```
 
 </details>
