@@ -4819,26 +4819,36 @@ Server running on port 3500
 </details>
 
 <details>
-  <summary>85. Sample</summary>
+  <summary>85. Express - Adding more routes</summary>
+
+server.js:
+
+```js
+const express = require("express");
+const app = express();
+const path = require("path");
+const PORT = process.env.PORT || 3500;
+
+app.get("/", (req, res) => {
+  // res.sendFile("./views/index.html", { root: __dirname });
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
+
+app.get("/new-page.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "new-page.html"));
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+```
 
 ```bs
-
+node run dev
 ```
 
-```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+```bs
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 3500
 ```
 
 </details>
