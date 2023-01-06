@@ -4917,6 +4917,7 @@ app.get("/new-page(.html)?", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "new-page.html"));
 });
 
+//redirect route
 app.get("/old-page(.html)?", (req, res) => {
   res.redirect(301, "/new-page.html"); //302 by default
 });
@@ -4937,7 +4938,7 @@ Server running on port 3500
 </details>
 
 <details>
-  <summary>88. Sample</summary>
+  <summary>88. Express - </summary>
 
 ```bs
 
