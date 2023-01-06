@@ -5629,32 +5629,127 @@ logs/reqLog.txt:
 </details>
 
 <details>
-  <summary>95. Sample</summary>
+  <summary>95. Express - Third-Party Middleware (Cors)</summary>
+
+Install Cors:
 
 ```bs
-
+npm i cors --save
 ```
 
-```js
-
+```bs
+// Cross Origin Resource Sharing
+app.use(cors());
 ```
 
-```js
+server.js:
 
+```js
+const express = require("express");
+const app = express();
+const path = require("path");
+const cors = require("cors");
+const { logger } = require("./middleware/logEvents");
+const PORT = process.env.PORT || 3500;
+
+// custom middleware logger
+app.use(logger);
+
+// Cross Origin Resource Sharing
+app.use(cors());
+
+// built-in middleware to handle urlencoded data
+// in other words, form data:
+// 'content-type: application/x-www-form-urlencoded'
+app.use(express.urlencoded({ extended: false }));
+
+// built-in middleware for json
+app.use(express.json());
+
+//serve static files
+app.use(express.static(path.join(__dirname, "/public")));
+
+app.get("^/$|/index(.html)?", (req, res) => {
+  // res.sendFile("./views/index.html", { root: __dirname });
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
+
+app.get("/new-page(.html)?", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "new-page.html"));
+});
+
+//redirect route
+app.get("/old-page(.html)?", (req, res) => {
+  res.redirect(301, "/new-page.html"); //302 by default
+});
+
+// Next Route handlers
+app.get(
+  "/hello(.html)?",
+  (req, res, next) => {
+    console.log("loading hello.html...");
+    next();
+  },
+  (req, res) => {
+    res.send("Hello World!");
+  }
+);
+
+// chaining route handlers
+const one = (req, res, next) => {
+  console.log("one");
+  next();
+};
+const two = (req, res, next) => {
+  console.log("two");
+  next();
+};
+const three = (req, res) => {
+  console.log("three");
+  res.send("Finished!");
+};
+
+app.get("/chain(.html)?", [one, two, three]);
+
+//Custom 404 Page
+app.get("/*", (req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 ```
 
-```js
-
+```bs
+google.com -> fetch('http://localhost:3500');
 ```
 
-```js
+```bs
+[nodemon] 2.0.20
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server.js`
+Server running on port 3500
+OPTIONS /
+GET /
+```
+
+log/reqLog.txt
+
+```bs
+20230106	23:06:50	5eb41bdb-5938-46ec-b764-59cd9796fb4c	GET	undefined	/
+20230106	23:06:50	ac65dbd1-916a-42e2-9664-7f1ea2fc62e3	GET	undefined	/css/style.css
+20230106	23:16:29	d14a07b1-fd03-4a9c-b65a-1704551b5516	GET	undefined	/about
+20230106	23:16:29	c23db065-ae38-4994-ac7a-f669fc9a60d6	GET	undefined	/css/style.css
+20230106	23:26:00	f45458b3-760b-417f-9652-c4f433fc0e93	OPTIONS	https://www.google.com	/
+20230106	23:26:00	dba79f61-9cc7-461c-82ab-3a23fa42a3f2	GET	https://www.google.com	/
 
 ```
 
 </details>
 
 <details>
-  <summary>96. Sample</summary>
+  <summary>96. Express - </summary>
 
 ```bs
 
