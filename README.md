@@ -4746,51 +4746,74 @@ logs/reqLog.txt:
 +EXPRESS
 
 <details>
-  <summary>83. Sample</summary>
+  <summary>83. Express - Send Simple Data to Page</summary>
+
+Install Express:
 
 ```bs
-
+npm install express --save
 ```
 
-```js
+server.js:
 
+```js
+const express = require("express");
+const app = express();
+const path = require("path");
+const PORT = process.env.PORT || 3500;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 ```
 
-```js
-
+```bs
+node run dev
 ```
 
-```js
+```bs
+> project@1.0.0 dev
+> nodemon server.js
 
-```
-
-```js
-
+[nodemon] 2.0.20
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server.js`
+Server running on port 3500
 ```
 
 </details>
 
 <details>
-  <summary>84. Sample</summary>
+  <summary>84. Express - Send HTML page to render</summary>
+
+server.js
+
+```js
+const express = require("express");
+const app = express();
+const path = require("path");
+const PORT = process.env.PORT || 3500;
+
+app.get("/", (req, res) => {
+  // res.sendFile("./views/index.html", { root: __dirname });
+  res.sendFile(path.join(__dirname, "views", "index.html"));
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+```
 
 ```bs
-
+node run dev
 ```
 
-```js
-
-```
-
-```js
-
-```
-
-```js
-
-```
-
-```js
-
+```bs
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 3500
 ```
 
 </details>
