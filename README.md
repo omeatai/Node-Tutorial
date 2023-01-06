@@ -4575,29 +4575,175 @@ GET
 </details>
 
 <details>
-  <summary>82. Sample</summary>
+  <summary>82. Node Server - Create Node Server</summary>
+
+server.js
+
+```js
+const http = require("http");
+const path = require("path");
+const fs = require("fs");
+const fsPromises = require("fs").promises;
+
+const logEvents = require("./logEvents");
+const EventEmitter = require("events");
+class Emitter extends EventEmitter {}
+
+// initialize object
+const myEmitter = new Emitter();
+myEmitter.on("log", (msg, fileName) => logEvents(msg, fileName));
+const PORT = process.env.PORT || 3500;
+
+const serveFile = async (filePath, contentType, response) => {
+  try {
+    const rawData = await fsPromises.readFile(
+      filePath,
+      !contentType.includes("image") ? "utf8" : ""
+    );
+    const data =
+      contentType === "application/json" ? JSON.parse(rawData) : rawData;
+    response.writeHead(filePath.includes("404.html") ? 404 : 200, {
+      "Content-Type": contentType,
+    });
+    response.end(
+      contentType === "application/json" ? JSON.stringify(data) : data
+    );
+  } catch (err) {
+    console.log(err);
+    myEmitter.emit("log", `${err.name}: ${err.message}`, "errLog.txt");
+    response.statusCode = 500;
+    response.end();
+  }
+};
+
+const server = http.createServer((req, res) => {
+  console.log(req.url);
+  console.log(req.method);
+  myEmitter.emit("log", `${req.url}\t${req.method}`, "reqLog.txt");
+
+  const extension = path.extname(req.url);
+
+  let contentType;
+
+  switch (extension) {
+    case ".css":
+      contentType = "text/css";
+      break;
+    case ".js":
+      contentType = "text/javascript";
+      break;
+    case ".json":
+      contentType = "application/json";
+      break;
+    case ".jpg":
+      contentType = "image/jpeg";
+      break;
+    case ".png":
+      contentType = "image/png";
+      break;
+    case ".txt":
+      contentType = "text/plain";
+      break;
+    default:
+      contentType = "text/html";
+  }
+
+  let filePath =
+    contentType === "text/html" && req.url === "/"
+      ? path.join(__dirname, "views", "index.html")
+      : contentType === "text/html" && req.url.slice(-1) === "/"
+      ? path.join(__dirname, "views", req.url, "index.html")
+      : contentType === "text/html"
+      ? path.join(__dirname, "views", req.url)
+      : path.join(__dirname, req.url);
+
+  // makes .html extension not required in the browser
+  if (!extension && req.url.slice(-1) !== "/") filePath += ".html";
+
+  const fileExists = fs.existsSync(filePath);
+
+  if (fileExists) {
+    serveFile(filePath, contentType, res);
+  } else {
+    switch (path.parse(filePath).base) {
+      case "old-page.html":
+        res.writeHead(301, { Location: "/new-page.html" });
+        res.end();
+        break;
+      case "www-page.html":
+        res.writeHead(301, { Location: "/" });
+        res.end();
+        break;
+      default:
+        serveFile(path.join(__dirname, "views", "404.html"), "text/html", res);
+    }
+  }
+});
+
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+```
+
+logEvents.js:
+
+```js
+const { format } = require("date-fns");
+const { v4: uuid } = require("uuid");
+
+const fs = require("fs");
+const fsPromises = require("fs").promises;
+const path = require("path");
+
+const logEvents = async (message, logName) => {
+  const dateTime = `${format(new Date(), "yyyyMMdd\tHH:mm:ss")}`;
+  const logItem = `${dateTime}\t${uuid()}\t${message}\n`;
+
+  try {
+    if (!fs.existsSync(path.join(__dirname, "logs"))) {
+      await fsPromises.mkdir(path.join(__dirname, "logs"));
+    }
+
+    await fsPromises.appendFile(path.join(__dirname, "logs", logName), logItem);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = logEvents;
+```
 
 ```bs
-
+node run dev
 ```
 
-```js
-
+```bs
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 3500
+/index
+GET
+/css/style.css
+GET
+/new-page
+GET
+/css/style.css
+GET
+/img/img1.jpg
+GET
 ```
 
-```js
+logs/reqLog.txt:
 
-```
-
-```js
-
-```
-
-```js
-
+```txt
+20230106	19:37:43	c5104bff-35f1-4346-b26c-67aee49052a0	/index	GET
+20230106	19:37:43	11d0a0bf-8c5f-43d5-9df9-a70d4b32d7ae	/css/style.css	GET
+20230106	19:38:27	c01a67e8-1255-4d21-9615-d7877282c4a5	/new-page	GET
+20230106	19:38:27	c2307b43-c81e-44ff-930c-1b0682e74232	/css/style.css	GET
+20230106	19:38:27	106b8afc-4352-4c80-bcaa-9e7434cb0bde	/img/img1.jpg	GET
 ```
 
 </details>
+
++EXPRESS
 
 <details>
   <summary>83. Sample</summary>
