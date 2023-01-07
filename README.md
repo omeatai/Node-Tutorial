@@ -5913,7 +5913,7 @@ Server running on port 3500
 </details>
 
 <details>
-  <summary>97. Express - </summary>
+  <summary>97. Express - Custom Error Handler</summary>
 
 ```bs
 
