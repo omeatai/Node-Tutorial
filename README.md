@@ -6379,6 +6379,9 @@ module.exports = router;
 server.js:
 
 ```bs
+//serve static files
+app.use("/", express.static(path.join(__dirname, "/public")));
+app.use("/subdir", express.static(path.join(__dirname, "/public")));
 app.use("/subdir", require("./routes/subdir"));
 ```
 
@@ -6421,8 +6424,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //serve static files
-app.use(express.static(path.join(__dirname, "/public")));
-
+app.use("/", express.static(path.join(__dirname, "/public")));
+app.use("/subdir", express.static(path.join(__dirname, "/public")));
 app.use("/subdir", require("./routes/subdir"));
 
 app.get("^/$|/index(.html)?", (req, res) => {
