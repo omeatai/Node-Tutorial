@@ -7052,7 +7052,7 @@ module.exports = {
 
 model/employees.json:
 
-```json
+```js
 [
   {
     id: 1,
