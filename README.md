@@ -6652,7 +6652,7 @@ GET /img/img1.jpg
 <details>
   <summary>102. Express - Creating REST API Router </summary>
 
-server.js
+server.js:
 
 ```bs
 //Routes
@@ -6867,28 +6867,210 @@ http://localhost:3500/employees/1
 </details>
 
 <details>
-  <summary>103. sample </summary>
+  <summary>103. Express - Refactoring REST API to MVC Pattern </summary>
 
-```bs
-
-```
+server.js:
 
 ```js
+const express = require("express");
+const app = express();
+const path = require("path");
+const cors = require("cors");
+const corsOptions = require("./config/corsOptions");
+const { logger } = require("./middleware/logEvents");
+const errorHandler = require("./middleware/errorHandler");
+const PORT = process.env.PORT || 3500;
 
+// custom middleware logger
+app.use(logger);
+
+// Cross Origin Resource Sharing
+app.use(cors(corsOptions));
+
+// built-in middleware to handle urlencoded form data
+app.use(express.urlencoded({ extended: false }));
+
+// built-in middleware for json
+app.use(express.json());
+
+//serve static files
+app.use("/", express.static(path.join(__dirname, "/public")));
+// app.use("/subdir", express.static(path.join(__dirname, "/public")));
+
+//Routes
+app.use("/", require("./routes/root"));
+// app.use("/subdir", require("./routes/subdir"));
+app.use("/employees", require("./routes/api/employees"));
+
+// Next Route handlers
+app.get(
+  "/hello(.html)?",
+  (req, res, next) => {
+    console.log("loading hello.html...");
+    next();
+  },
+  (req, res) => {
+    res.send("Hello World!");
+  }
+);
+
+// chaining route handlers
+const one = (req, res, next) => {
+  console.log("one");
+  next();
+};
+const two = (req, res, next) => {
+  console.log("two");
+  next();
+};
+const three = (req, res) => {
+  console.log("three");
+  res.send("Finished!");
+};
+
+app.get("/chain(.html)?", [one, two, three]);
+
+//Custom 404 Page
+app.all("*", (req, res) => {
+  res.status(404);
+  if (req.accepts("html")) {
+    res.sendFile(path.join(__dirname, "views", "404.html"));
+  } else if (req.accepts("json")) {
+    res.json({ error: "404 Not Found" });
+  } else {
+    res.type("txt").send("404 Not Found");
+  }
+});
+
+//Custom Error Handler
+app.use(errorHandler);
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 ```
 
-```js
+config/corsOptions.js:
 
+```js
+const whitelist = [
+  "https://www.reactsite.com",
+  "http://127.0.0.1:5500",
+  "http://localhost:3500",
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+
+module.exports = corsOptions;
 ```
 
-```js
+routes/root.js:
 
+```js
+const express = require("express");
+const router = express.Router();
+const path = require("path");
+
+router.get("^/$|/index(.html)?", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "views", "index.html"));
+});
+
+module.exports = router;
+```
+
+routes/api/employees.js:
+
+```js
+const express = require("express");
+const router = express.Router();
+const employeesController = require("../../controllers/employeesController");
+
+router
+  .route("/")
+  .get(employeesController.getAllEmployees)
+  .post(employeesController.createNewEmployee)
+  .put(employeesController.updateEmployee)
+  .delete(employeesController.deleteEmployee);
+
+router.route("/:id").get(employeesController.getEmployee);
+
+module.exports = router;
+```
+
+controllers/employeesController.js:
+
+```js
+const data = {};
+data.employees = require("../model/employees.json");
+
+//GET /employees
+const getAllEmployees = (req, res) => {
+  res.json(data.employees);
+};
+
+//POST /employees
+const createNewEmployee = (req, res) => {
+  res.json({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+  });
+};
+
+//PUT /employees/:id
+const updateEmployee = (req, res) => {
+  res.json({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+  });
+};
+
+//DELETE /employees/:id
+const deleteEmployee = (req, res) => {
+  res.json({ id: req.body.id });
+};
+
+//GET /employees/:id
+const getEmployee = (req, res) => {
+  res.json({ id: req.params.id });
+};
+
+module.exports = {
+  getAllEmployees,
+  createNewEmployee,
+  updateEmployee,
+  deleteEmployee,
+  getEmployee,
+};
+```
+
+model/employees.json:
+
+```json
+[
+  {
+    id: 1,
+    firstname: "Dave",
+    lastname: "Gray",
+  },
+  {
+    id: 2,
+    firstname: "John",
+    lastname: "Smith",
+  },
+];
 ```
 
 </details>
 
 <details>
-  <summary>104. sample </summary>
+  <summary>104. Express - Imitating a model db with controllers </summary>
 
 ```bs
 
