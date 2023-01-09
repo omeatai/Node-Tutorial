@@ -6356,7 +6356,7 @@ GET /css/style.css
 </details>
 
 <details>
-  <summary>100. Creating Routes with Router for subdir</summary>
+  <summary>100. Express - Creating Routes with Router for subdir</summary>
 
 routes/subdir.js:
 
@@ -6507,7 +6507,7 @@ GET /subdir/test
 </details>
 
 <details>
-  <summary>101. Creating Routes with Router for index page </summary>
+  <summary>101. Express - Creating Routes with Router for index page </summary>
 
 routes/root.js:
 
@@ -6650,7 +6650,7 @@ GET /img/img1.jpg
 </details>
 
 <details>
-  <summary>102. sample </summary>
+  <summary>102. Express - Creating REST API Router </summary>
 
 ```bs
 
