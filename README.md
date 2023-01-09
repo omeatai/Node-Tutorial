@@ -6378,6 +6378,10 @@ module.exports = router;
 
 server.js:
 
+```bs
+app.use("/subdir", require("./routes/subdir"));
+```
+
 ```js
 const express = require("express");
 const app = express();
