@@ -7070,7 +7070,7 @@ model/employees.json:
 </details>
 
 <details>
-  <summary>104. Express - Simulating a model db with controllers </summary>
+  <summary>104. Express - Simulating a model db with Controllers </summary>
 
 server.js:
 
