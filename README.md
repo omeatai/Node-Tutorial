@@ -7070,22 +7070,302 @@ model/employees.json:
 </details>
 
 <details>
-  <summary>104. Express - Imitating a model db with controllers </summary>
+  <summary>104. Express - Simulating a model db with controllers </summary>
+
+server.js:
+
+```js
+const express = require("express");
+const app = express();
+const path = require("path");
+const cors = require("cors");
+const corsOptions = require("./config/corsOptions");
+const { logger } = require("./middleware/logEvents");
+const errorHandler = require("./middleware/errorHandler");
+const PORT = process.env.PORT || 3500;
+
+// custom middleware logger
+app.use(logger);
+
+// Cross Origin Resource Sharing
+app.use(cors(corsOptions));
+
+// built-in middleware to handle urlencoded form data
+app.use(express.urlencoded({ extended: false }));
+
+// built-in middleware for json
+app.use(express.json());
+
+//serve static files
+app.use("/", express.static(path.join(__dirname, "/public")));
+// app.use("/subdir", express.static(path.join(__dirname, "/public")));
+
+//Routes
+app.use("/", require("./routes/root"));
+// app.use("/subdir", require("./routes/subdir"));
+app.use("/employees", require("./routes/api/employees"));
+
+// Next Route handlers
+app.get(
+  "/hello(.html)?",
+  (req, res, next) => {
+    console.log("loading hello.html...");
+    next();
+  },
+  (req, res) => {
+    res.send("Hello World!");
+  }
+);
+
+// chaining route handlers
+const one = (req, res, next) => {
+  console.log("one");
+  next();
+};
+const two = (req, res, next) => {
+  console.log("two");
+  next();
+};
+const three = (req, res) => {
+  console.log("three");
+  res.send("Finished!");
+};
+
+app.get("/chain(.html)?", [one, two, three]);
+
+//Custom 404 Page
+app.all("*", (req, res) => {
+  res.status(404);
+  if (req.accepts("html")) {
+    res.sendFile(path.join(__dirname, "views", "404.html"));
+  } else if (req.accepts("json")) {
+    res.json({ error: "404 Not Found" });
+  } else {
+    res.type("txt").send("404 Not Found");
+  }
+});
+
+//Custom Error Handler
+app.use(errorHandler);
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+```
+
+controllers/employeesController.js:
+
+```js
+// const data = {};
+// data.employees = require("../model/employees.json");
+
+const data = {
+  employees: require("../model/employees.json"),
+  setEmployees: function (data) {
+    this.employees = data;
+  },
+};
+
+//GET /employees
+const getAllEmployees = (req, res) => {
+  res.json(data.employees);
+};
+
+//POST /employees
+const createNewEmployee = (req, res) => {
+  const newEmployee = {
+    id: data.employees?.length
+      ? data.employees[data.employees.length - 1].id + 1
+      : 1,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+  };
+
+  if (!newEmployee.firstname || !newEmployee.lastname) {
+    return res
+      .status(400)
+      .json({ message: "First and last names are required." });
+  }
+
+  data.setEmployees([...data.employees, newEmployee]);
+  res.status(201).json(data.employees);
+};
+
+//PUT /employees/:id
+const updateEmployee = (req, res) => {
+  const employee = data.employees.find(
+    (emp) => emp.id === parseInt(req.body.id)
+  );
+  if (!employee) {
+    return res
+      .status(400)
+      .json({ message: `Employee ID ${req.body.id} not found` });
+  }
+  if (req.body.firstname) employee.firstname = req.body.firstname;
+  if (req.body.lastname) employee.lastname = req.body.lastname;
+  const filteredArray = data.employees.filter(
+    (emp) => emp.id !== parseInt(req.body.id)
+  );
+  const unsortedArray = [...filteredArray, employee];
+  data.setEmployees(
+    unsortedArray.sort((a, b) => (a.id > b.id ? 1 : a.id < b.id ? -1 : 0))
+  );
+  res.json(data.employees);
+};
+
+//DELETE /employees/:id
+const deleteEmployee = (req, res) => {
+  const employee = data.employees.find(
+    (emp) => emp.id === parseInt(req.body.id)
+  );
+  if (!employee) {
+    return res
+      .status(400)
+      .json({ message: `Employee ID ${req.body.id} not found` });
+  }
+  const filteredArray = data.employees.filter(
+    (emp) => emp.id !== parseInt(req.body.id)
+  );
+  data.setEmployees([...filteredArray]);
+  res.json(data.employees);
+};
+
+//GET /employees/:id
+const getEmployee = (req, res) => {
+  const employee = data.employees.find(
+    (emp) => emp.id === parseInt(req.params.id)
+  );
+  if (!employee) {
+    return res
+      .status(400)
+      .json({ message: `Employee ID ${req.params.id} not found` });
+  }
+  res.json(employee);
+};
+
+module.exports = {
+  getAllEmployees,
+  createNewEmployee,
+  updateEmployee,
+  deleteEmployee,
+  getEmployee,
+};
+```
 
 ```bs
-
+npm run dev
 ```
 
-```js
+GET:
 
+```bs
+http://localhost:3500/employees
 ```
 
-```js
-
+```bs
+[
+  {
+    "id": 1,
+    "firstname": "Dave",
+    "lastname": "Gray"
+  },
+  {
+    "id": 2,
+    "firstname": "John",
+    "lastname": "Smith"
+  }
+]
 ```
 
-```js
+POST:
 
+Body = {"firstname":"John", "lastname": "Doe"}
+
+```bs
+http://localhost:3500/employees
+```
+
+```bs
+[
+  {
+    "id": 1,
+    "firstname": "Dave",
+    "lastname": "Gray"
+  },
+  {
+    "id": 2,
+    "firstname": "John",
+    "lastname": "Smith"
+  },
+  {
+    "id": 3,
+    "firstname": "John",
+    "lastname": "Doe"
+  }
+]
+```
+
+PUT:
+
+Body = {"id":2, "lastname": "Jonny"}
+
+```bs
+http://localhost:3500/employees
+```
+
+```bs
+[
+  {
+    "id": 1,
+    "firstname": "Dave",
+    "lastname": "Gray"
+  },
+  {
+    "id": 2,
+    "firstname": "John",
+    "lastname": "Jonny"
+  },
+  {
+    "id": 3,
+    "firstname": "John",
+    "lastname": "Doe"
+  }
+]
+```
+
+DELETE:
+
+Body = {"id":3}
+
+```bs
+http://localhost:3500/employees
+```
+
+```bs
+[
+  {
+    "id": 1,
+    "firstname": "Dave",
+    "lastname": "Gray"
+  },
+  {
+    "id": 2,
+    "firstname": "John",
+    "lastname": "Jonny"
+  }
+]
+```
+
+GET:
+
+```bs
+http://localhost:3500/employees/1
+```
+
+```bs
+{
+  "id": 1,
+  "firstname": "Dave",
+  "lastname": "Gray"
+}
 ```
 
 </details>
