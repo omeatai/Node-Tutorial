@@ -7588,25 +7588,204 @@ POST /register
 ]
 ```
 
+<!-- Already Exist-->
+
+Body = { "user": "walter1", "pwd": "walterpwd"}
+
+```bs
+http://localhost:3500/register
+```
+
+```bs
+Conflict
+```
+
 </details>
 
 <details>
   <summary>106. Express - User Password Login Authentication </summary>
 
+server.js:
+
 ```bs
-
+//Routes
+app.use("/", require("./routes/root"));
+app.use("/register", require("./routes/register"));
+app.use("/auth", require("./routes/auth"));
+app.use("/employees", require("./routes/api/employees"));
 ```
 
 ```js
+const express = require("express");
+const app = express();
+const path = require("path");
+const cors = require("cors");
+const corsOptions = require("./config/corsOptions");
+const { logger } = require("./middleware/logEvents");
+const errorHandler = require("./middleware/errorHandler");
+const PORT = process.env.PORT || 3500;
 
+// custom middleware logger
+app.use(logger);
+
+// Cross Origin Resource Sharing
+app.use(cors(corsOptions));
+
+// built-in middleware to handle urlencoded form data
+app.use(express.urlencoded({ extended: false }));
+
+// built-in middleware for json
+app.use(express.json());
+
+//serve static files
+app.use("/", express.static(path.join(__dirname, "/public")));
+// app.use("/subdir", express.static(path.join(__dirname, "/public")));
+
+//Routes
+app.use("/", require("./routes/root"));
+app.use("/register", require("./routes/register"));
+app.use("/auth", require("./routes/auth"));
+app.use("/employees", require("./routes/api/employees"));
+
+// Next Route handlers
+app.get(
+  "/hello(.html)?",
+  (req, res, next) => {
+    console.log("loading hello.html...");
+    next();
+  },
+  (req, res) => {
+    res.send("Hello World!");
+  }
+);
+
+// chaining route handlers
+const one = (req, res, next) => {
+  console.log("one");
+  next();
+};
+const two = (req, res, next) => {
+  console.log("two");
+  next();
+};
+const three = (req, res) => {
+  console.log("three");
+  res.send("Finished!");
+};
+
+app.get("/chain(.html)?", [one, two, three]);
+
+//Custom 404 Page
+app.all("*", (req, res) => {
+  res.status(404);
+  if (req.accepts("html")) {
+    res.sendFile(path.join(__dirname, "views", "404.html"));
+  } else if (req.accepts("json")) {
+    res.json({ error: "404 Not Found" });
+  } else {
+    res.type("txt").send("404 Not Found");
+  }
+});
+
+//Custom Error Handler
+app.use(errorHandler);
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 ```
 
-```js
+routes/auth.js:
 
+```js
+const express = require("express");
+const router = express.Router();
+const authController = require("../controllers/authController");
+
+router.post("/", authController.handleLogin);
+
+module.exports = router;
 ```
 
-```js
+controllers/authController.js:
 
+```js
+const usersDB = {
+  users: require("../model/users.json"),
+  setUsers: function (data) {
+    this.users = data;
+  },
+};
+const bcrypt = require("bcrypt");
+
+const handleLogin = async (req, res) => {
+  const { user, pwd } = req.body;
+  if (!user || !pwd)
+    return res
+      .status(400)
+      .json({ message: "Username and password are required." });
+  const foundUser = usersDB.users.find((person) => person.username === user);
+  if (!foundUser) return res.sendStatus(401); //Unauthorized
+  // evaluate password
+  const match = await bcrypt.compare(pwd, foundUser.password);
+  if (match) {
+    // create JWTs
+    res.json({ success: `User ${user} is logged in!` });
+  } else {
+    res.sendStatus(401);
+  }
+};
+
+module.exports = { handleLogin };
+```
+
+```bs
+npm run dev
+```
+
+POST:
+
+Body = { "user": "walter1", "pwd": "walterpwd"}
+
+```bs
+http://localhost:3500/auth
+```
+
+```bs
+{
+  "success": "User walter1 is logged in!"
+}
+```
+
+```bs
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Server running on port 3500
+POST /auth
+```
+
+POST:
+
+<!-- wrong password -->
+
+Body = { "user": "walter1", "pwd": "walterpwdssss"}
+
+```bs
+http://localhost:3500/auth
+```
+
+```bs
+Unauthorized
+```
+
+<!-- wrong username-->
+
+Body = { "user": "walter100", "pwd": "walterpwd"}
+
+```bs
+http://localhost:3500/auth
+```
+
+```bs
+Unauthorized
 ```
 
 </details>
