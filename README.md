@@ -7792,11 +7792,19 @@ Unauthorized
 
 </details>
 
++JWT
+
 <details>
-  <summary>107. sample </summary>
+  <summary>107. Express JWT Authentication- Creating .dotenv Secrets</summary>
+
+Install Dependencies:
 
 ```bs
+npm i dotenv jsonwebtoken cookie-parser --save
 
+npm i dotenv
+npm i jsonwebtoken
+npm i cookie-parser
 ```
 
 ```js
