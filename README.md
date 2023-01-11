@@ -7588,7 +7588,7 @@ POST /register
 ]
 ```
 
-<!-- Already Exist-->
+Already Exist:
 
 Body = { "user": "walter1", "pwd": "walterpwd"}
 
@@ -7764,7 +7764,7 @@ POST /auth
 
 POST:
 
-<!-- wrong password -->
+Wrong password:
 
 Body = { "user": "walter1", "pwd": "walterpwdssss"}
 
@@ -7776,7 +7776,7 @@ http://localhost:3500/auth
 Unauthorized
 ```
 
-<!-- wrong username-->
+Wrong username:
 
 Body = { "user": "walter100", "pwd": "walterpwd"}
 
