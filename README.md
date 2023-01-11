@@ -7588,6 +7588,8 @@ POST /register
 ]
 ```
 
+POST:
+
 Already Exist:
 
 Body = { "user": "walter1", "pwd": "walterpwd"}
